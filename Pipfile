@@ -13,6 +13,7 @@ django = "*"
 psycopg2-binary = "*"
 django-allauth = "*"
 django-extensions = "*"
+django-better-admin-arrayfield = "*"
 
 [requires]
 python_version = "3.8"

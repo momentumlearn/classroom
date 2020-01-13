@@ -15,8 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from evaluations import views as evaluations_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('evaluations/', evaluations_views.evaluations, name='evaluations'),
+    path('evaluations/schedule/',
+         evaluations_views.schedule_evaluation,
+         name='schedule_evaluation'),
+    path('evaluations/scheduled/<int:pk>/',
+         evaluations_views.take_evaluation,
+         name='take_evaluation'),
 ]

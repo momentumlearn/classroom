@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "50b04efcf8f6372f831b8c67708d4c20051836e252d9519d960b0c246eb98601"
+            "sha256": "f18671e4d97e36416ea3dca78cb5fbd5b4c4b7691ef78adbf736ada4fefe6fbd"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -58,6 +58,13 @@
             ],
             "index": "pypi",
             "version": "==0.41.0"
+        },
+        "django-better-admin-arrayfield": {
+            "hashes": [
+                "sha256:379744d28e28c3b64e624a803f83421db07dbc03bb4171a6f680aed9c6cab676"
+            ],
+            "index": "pypi",
+            "version": "==1.0.5"
         },
         "django-extensions": {
             "hashes": [
@@ -274,10 +281,10 @@
         },
         "pydocstyle": {
             "hashes": [
-                "sha256:4167fe954b8f27ebbbef2fbcf73c6e8ad1e7bb31488fce44a69fdfc4b0cd0fae",
-                "sha256:a0de36e549125d0a16a72a8c8c6c9ba267750656e72e466e994c222f1b6e92cb"
+                "sha256:da7831660b7355307b32778c4a0dbfb137d89254ef31a2b2978f50fc0b4d7586",
+                "sha256:f4f5d210610c2d153fae39093d44224c17429e2ad7da12a8b419aba5c2f614b5"
             ],
-            "version": "==5.0.1"
+            "version": "==5.0.2"
         },
         "pyflakes": {
             "hashes": [

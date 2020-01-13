@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Scheduled Evaluations</h1>
+  <ul>
+  {% for evaluation in request.user.scheduled_evaluations.all %}
+    <li><a href="{% url 'take_evaluation' pk=evaluation.pk %}">Scheduled on {{ evaluation.start_date }}</a></li>
+  {% endfor %}
+  </ul>
+
+  <h1>Completed Evaluations</h1>
+  <ul>
+  {% for evaluation in request.user.evaluations.all %}
+    <li>Scheduled on {{ evaluation.scheduled_by.start_date }}; completed on {{ evaluation.evaluated_on }}</li>
+  {% endfor %}
+  </ul>
+{% endblock %}
