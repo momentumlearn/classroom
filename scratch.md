@@ -1,3 +1,5 @@
+* /
+  * if logged in, redirect to /evaluations/
 * /evaluations/schedule/
   * instructor only
   * form

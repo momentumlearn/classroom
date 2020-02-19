@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
 from users.models import is_student, is_instructor
+from datetime import date
 from .models import ScheduledEvaluation
 from .forms import ScheduledEvaluationForm, EvaluationForm
+from django.urls import reverse
 
 
 @login_required
@@ -18,11 +20,10 @@ def evaluations_student(request):
 
 
 def evaluations_instructor(request):
-    return render(request, "evaluations/evaluations_instructor.html")
-
-
-def evaluations_instructor(request):
-    pass
+    scheduled_evaluations = ScheduledEvaluation.objects.filter(
+        start_date__gte=date.today()).order_by('start_date')
+    return render(request, "evaluations/evaluations_instructor.html",
+                  {"scheduled_evaluations": scheduled_evaluations})
 
 
 @login_required
@@ -53,4 +54,5 @@ def take_evaluation(request, pk):
     else:
         form = EvaluationForm(scheduled_eval=scheduled_eval)
 
+    form.helper.form_action = reverse('take_evaluation', kwargs={'pk': pk})
     return render(request, "evaluations/take_evaluation.html", {"form": form})

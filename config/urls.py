@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from evaluations import views as evaluations_views
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +28,5 @@ urlpatterns = [
     path('evaluations/scheduled/<int:pk>/',
          evaluations_views.take_evaluation,
          name='take_evaluation'),
+    path('', RedirectView.as_view(url='/evaluations/'), name='home'),
 ]

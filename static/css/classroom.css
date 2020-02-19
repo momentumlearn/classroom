@@ -1,0 +1,72 @@
+:root {
+  --hot-pink: #ff41b4;
+  --navy: #001b44;
+}
+
+.sans-serif {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+code, .code {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.control-group {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.control-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.submit-button {
+  border-style: solid;
+  border-width: .25rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: white;
+  border-color: var(--navy);
+}
+
+.submit-button:hover {
+  background-color: var(--navy);
+  color: white;
+}
+
+label.checkbox, label.radio {
+  display: block;
+  margin-left: 0;
+  margin-bottom: 0.25rem;
+}
+
+label.checkbox input, label.radio input {
+  margin-right: 0.5rem;
+}
+
+@media screen and (min-width: 30em) {
+  #div_id_skills .controls {
+    columns: 2;
+  }  
+}
+
+@media screen and (min-width: 60em) {
+  #div_id_skills .controls {
+    columns: 3;
+  }
+}
+
+.pv2 {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+.ph3 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+

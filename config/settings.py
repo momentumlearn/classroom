@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'django_extensions',
     'django_better_admin_arrayfield.apps.DjangoBetterAdminArrayfieldConfig',
+    'crispy_forms',
 
     # My apps
     'users',
@@ -130,6 +131,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
 
 # Authentication
 

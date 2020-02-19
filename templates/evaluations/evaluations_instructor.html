@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Scheduled Evaluations</h2>
+  {% if scheduled_evaluations %}
+  <ul>
+    {% for evaluation in scheduled_evaluations %}
+    <li>{{ evaluation.start_date }} - {{ evaluation.team }}</li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No evaluations scheduled.</p>
+  {% endif %}
+  <p>
+  <a class="button" href="{% url 'schedule_evaluation' %}">Schedule a new evaluation</a>  
+  </p>
+{% endblock %}

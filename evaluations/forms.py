@@ -1,4 +1,6 @@
 from django import forms
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
 from .models import ScheduledEvaluation, Evaluation, SkillEvaluation
 
 
@@ -7,6 +9,18 @@ class BetterDateInput(forms.DateInput):
 
 
 class ScheduledEvaluationForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+
+        self.helper.form_method = 'post'
+        self.helper.form_action = 'schedule_evaluation'
+
+        self.helper.add_input(
+            Submit('submit',
+                   'Schedule evaluation',
+                   css_class="submit-button grow"))
 
     class Meta:
         model = ScheduledEvaluation
@@ -34,6 +48,15 @@ class EvaluationForm(forms.Form):
                 choices=[(i + 1, f"{i+1}. {level}")
                          for i, level in enumerate(skill.levels)],
                 widget=forms.RadioSelect)
+
+        self.helper = FormHelper()
+
+        self.helper.form_method = 'post'
+
+        self.helper.add_input(
+            Submit('submit',
+                   'Submit evaluation',
+                   css_class="submit-button grow"))
 
     def save(self, user):
         if not self.is_valid():
