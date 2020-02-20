@@ -14,6 +14,12 @@ import os
 from pathlib import Path
 from typing import List
 
+import environ
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False),
+    ALLOWED_HOSTS=(list, ['127.0.0.1']))
+
 # Build paths inside the project like this: BASE_DIR / path
 BASE_DIR = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -25,9 +31,9 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY',
                        '-*vs66ys__8fn#p9i!t6f3zepdgtn(@d%6*j&6cm)tftpv4cko')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS: List[str] = []
+ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
 # Application definition
 

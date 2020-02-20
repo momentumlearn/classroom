@@ -7,6 +7,7 @@ django-allauth==0.41.0
 django-better-admin-arrayfield==1.0.5
 django-crispy-forms==1.8.1
 django-debug-toolbar==2.2
+django-environ==0.4.5
 django-extensions==2.2.8
 django==3.0.3
 idna==2.9
