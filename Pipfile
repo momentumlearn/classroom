@@ -17,6 +17,7 @@ django-extensions = "*"
 django-better-admin-arrayfield = "*"
 django-crispy-forms = "*"
 werkzeug = "*"
+django-debug-toolbar = "*"
 
 [requires]
 python_version = "3.8"

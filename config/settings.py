@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'django_better_admin_arrayfield.apps.DjangoBetterAdminArrayfieldConfig',
     'crispy_forms',
+    'debug_toolbar',
 
     # My apps
     'users',
@@ -54,6 +55,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -152,3 +154,7 @@ ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
