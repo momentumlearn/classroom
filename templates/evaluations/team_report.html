@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Team Report - {{ team }}</h2>
+  <ul>
+    {% for skill in skills %}
+    <li>{{ skill.name }} - {{ skill.count }} - {{ skill.avg }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

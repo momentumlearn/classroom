@@ -1,17 +1,85 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Scheduled Evaluations</h1>
+  <h2>Scheduled Evaluations</h2>
   <ul>
   {% for evaluation in request.user.scheduled_evaluations.all %}
     <li><a href="{% url 'take_evaluation' pk=evaluation.pk %}">Scheduled on {{ evaluation.start_date }}</a></li>
   {% endfor %}
   </ul>
 
-  <h1>Completed Evaluations</h1>
+  <h2>Completed Evaluations</h2>
   <ul>
-  {% for evaluation in request.user.evaluations.all %}
-    <li>Scheduled on {{ evaluation.scheduled_by.start_date }}; completed on {{ evaluation.evaluated_on }}</li>
+  {% for evaluation in evaluations %}
+    <li>Scheduled on {{ evaluation.scheduled_by.start_date }}; completed on {{ evaluation.evaluated_at|date:"Y-m-d" }}</li>
   {% endfor %}
   </ul>
+
+  <h2>Your Evaluation Record</h2>
+
+  <h3>Current Skill Rankings</h3>
+  <canvas id="skills-chart" width="40" height="20"></canvas>
+
+  <h3>Average Evaluation Score over Time</h3>
+  <canvas id="evaluations-chart" width="400" height="200"></canvas>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  let data = contextData
+  let hotPink = getComputedStyle(document.body).getPropertyValue('--hot-pink')
+
+  let skillsChart = new Chart(document.querySelector("#skills-chart"), {
+    type: 'horizontalBar',
+    data: {
+      labels: data.skills_labels,
+      datasets: [
+        {
+          label: "Skill Level",
+          data: data.skills_scores,
+          backgroundColor: hotPink
+        }
+      ]
+    },
+    options: {
+      scales: {
+        xAxes: [{
+          ticks: {
+            beginAtZero: true,
+            stepSize: 1
+          }
+        }]
+      }
+    }
+  })
+
+
+  let evalChart = new Chart(document.querySelector("#evaluations-chart"), {
+    type: 'line',    
+    data: {
+      labels: data.evaluation_dates,
+      datasets: [
+        {
+          label: "Average Score",
+          data: data.evaluation_avgs,
+          fill: false,
+          borderColor: hotPink
+        }
+      ]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            suggestedMax: 4
+          }
+        }],
+        xAxes: [{
+          offset: true
+        }]
+      }
+    }
+  })
+</script>
 {% endblock %}

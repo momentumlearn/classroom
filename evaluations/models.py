@@ -27,11 +27,12 @@ class ScheduledEvaluation(models.Model):
 
 class Evaluation(models.Model):
     scheduled_by = models.ForeignKey(to=ScheduledEvaluation,
+                                     related_name='evaluations',
                                      on_delete=models.PROTECT)
     user = models.ForeignKey(to=User,
                              related_name='evaluations',
                              on_delete=models.PROTECT)
-    evaluated_on = models.DateField(auto_now_add=True)
+    evaluated_at = models.DateTimeField(auto_now_add=True)
 
 
 class SkillEvaluation(models.Model):

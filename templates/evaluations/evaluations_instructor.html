@@ -14,4 +14,19 @@
   <p>
   <a class="button" href="{% url 'schedule_evaluation' %}">Schedule a new evaluation</a>  
   </p>
+
+  <h2>Previous Evaluations</h2>
+  {% if previous_evaluations %}
+  <ul>
+    {% for evaluation in previous_evaluations %}
+    <li>
+      <a href="{% url 'evaluation_report' pk=evaluation.pk %}">
+      {{ evaluation.start_date }} - {{ evaluation.team }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No previous evaluations.</p>
+  {% endif %}
 {% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Evaluation Report</h2>
+  <h3><a href="{% url 'team_report' pk=scheduled_evaluation.team.pk %}">{{ scheduled_evaluation.team }}</a> - {{ scheduled_evaluation.start_date }}</h3>
+  <ul>
+    {% for skill in skills %}
+    <li>{{ skill.name }} - {{ skill.count }} - {{ skill.avg }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

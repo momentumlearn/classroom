@@ -29,6 +29,12 @@ urlpatterns = [
     path('evaluations/scheduled/<int:pk>/',
          evaluations_views.take_evaluation,
          name='take_evaluation'),
+    path('evaluations/report/<int:pk>/',
+         evaluations_views.evaluation_report,
+         name='evaluation_report'),
+    path('team/report/<int:pk>/',
+         evaluations_views.team_report,
+         name='team_report'),
     path('', RedirectView.as_view(url='/evaluations/'), name='home'),
 ]
 

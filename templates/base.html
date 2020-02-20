@@ -7,18 +7,28 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Momentum Classroom</title>
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i,700|IBM+Plex+Sans:400,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'css/tachyons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/tachyons.min.css' %}">  
   <link rel="stylesheet" href="{% static 'css/classroom.css' %}">
+  <script src="{% static 'js/chart.js' %}"></script>
+  {{ js_data|json_script:"context-data" }}
+  <script>
+  let contextData = window.contextData = JSON.parse(document.getElementById('context-data').textContent)
+  </script>
+  {% block head %}
+  {% endblock %}
 </head>
 <body class="sans-serif">
   <div class="ba bw4 b--hot-pink min-vh-100">
-    <div class="mw8 pa4 center">
-      <div class="f1 bg-navy white pa1 ph2">
+    <div class="bg-navy">
+      <h1 class="f1 white ma0 normal mw8 ph4 pv2 center">
         <a class="link white" href="/">Momentum Classroom</a>
-      </div>
-      
+      </h1>
+    </div>
+    <div class="mw8 ph4 pv2 center">      
       {% block content %}{% endblock %}
     </div>
-  </div>  
+  </div>
+  {% block scripts %}
+  {% endblock %}    
 </body>
 </html>
