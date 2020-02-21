@@ -35,6 +35,7 @@ urlpatterns = [
     path('team/report/<int:pk>/',
          evaluations_views.team_report,
          name='team_report'),
+    path('health/', evaluations_views.health_check, name='health_check'),
     path('', RedirectView.as_view(url='/evaluations/'), name='home'),
 ]
 

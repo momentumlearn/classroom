@@ -11,6 +11,10 @@ from .forms import EvaluationForm, ScheduledEvaluationForm
 from .models import ScheduledEvaluation, Skill
 
 
+def health_check(request):
+    return render(request, "evaluations/health_check.html")
+
+
 @login_required
 @user_passes_test(lambda u: is_student(u) or is_instructor(u))
 def evaluations(request):
