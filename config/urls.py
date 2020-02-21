@@ -19,6 +19,11 @@ from evaluations import views as evaluations_views
 from django.views.generic.base import RedirectView
 from django.conf import settings
 
+
+def trigger_error(request):
+    division_by_zero = 1 / 0
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
@@ -36,6 +41,7 @@ urlpatterns = [
          evaluations_views.team_report,
          name='team_report'),
     path('health/', evaluations_views.health_check, name='health_check'),
+    path('sentry-debug/', trigger_error),
     path('', RedirectView.as_view(url='/evaluations/'), name='home'),
 ]
 

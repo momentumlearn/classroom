@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 from pathlib import Path
-from typing import List
 
 import environ
 env = environ.Env(
@@ -23,6 +22,7 @@ env = environ.Env(
     SMTP_PORT=(int, 25),
     SMTP_USERNAME=(str, None),
     SMTP_PASSWORD=(str, None),
+    SENTRY_DSN=(str, None),
 )
 
 # Build paths inside the project like this: BASE_DIR / path
@@ -195,3 +195,15 @@ if env('SMTP_HOST'):
     EMAIL_USE_TLS = True
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+if env('SENTRY_DSN'):
+    import sentry_sdk
+    from sentry_sdk.integrations.django import DjangoIntegration
+
+    sentry_sdk.init(
+        dsn=env('SENTRY_DSN'),
+        integrations=[DjangoIntegration()],
+
+        # If you wish to associate users to errors (assuming you are using
+        # django.contrib.auth) you may enable sending PII data.
+        send_default_pii=True)
