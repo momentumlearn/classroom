@@ -23,7 +23,8 @@ env = environ.Env(
     SMTP_USERNAME=(str, None),
     SMTP_PASSWORD=(str, None),
     SENTRY_DSN=(str, None),
-)
+    DJANGO_SECRET_KEY=(str,
+                       '-*vs66ys__8fn#p9i!t6f3zepdgtn(@d%6*j&6cm)tftpv4cko'))
 
 # Build paths inside the project like this: BASE_DIR / path
 BASE_DIR = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -32,8 +33,7 @@ BASE_DIR = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY',
-                       '-*vs66ys__8fn#p9i!t6f3zepdgtn(@d%6*j&6cm)tftpv4cko')
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
