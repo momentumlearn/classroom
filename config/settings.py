@@ -18,7 +18,12 @@ import environ
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False),
-    ALLOWED_HOSTS=(list, ['127.0.0.1']))
+    ALLOWED_HOSTS=(list, ['127.0.0.1']),
+    SMTP_HOST=(str, None),
+    SMTP_PORT=(int, 25),
+    SMTP_USERNAME=(str, None),
+    SMTP_PASSWORD=(str, None),
+)
 
 # Build paths inside the project like this: BASE_DIR / path
 BASE_DIR = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -179,3 +184,14 @@ ACCOUNT_USERNAME_REQUIRED = False
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+# Mail
+
+if env('SMTP_HOST'):
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = env('SMTP_HOST')
+    EMAIL_HOST_USER = env('SMTP_USERNAME')
+    EMAIL_HOST_PASSWORD = env('SMTP_PASSWORD')
+    EMAIL_USE_TLS = True
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
