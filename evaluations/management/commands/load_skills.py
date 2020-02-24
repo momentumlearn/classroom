@@ -48,10 +48,9 @@ class Command(BaseCommand):
             skills.append(current_skill)
 
         if skills:
-            Skill.objects.all().delete()
             for skill_def in skills:
-                skill = Skill(name=skill_def['name'],
-                              levels=skill_def['levels'])
+                skill, _ = Skill.objects.get_or_create(name=skill_def['name'])
+                skill.levels = skill_def['levels']
                 if 'description' in skill_def:
                     skill.description = skill_def['description']
                 skill.save()
