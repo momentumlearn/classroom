@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 import re
 import os
-from pprint import pprint
+import sys
 from evaluations.models import Skill
 
 
@@ -15,10 +15,10 @@ class Command(BaseCommand):
         filename = options['filename']
         if not os.path.exists(filename):
             print(f"{filename} does not exist!")
-            exit(1)
+            sys.exit(1)
         if not os.path.isfile(filename):
             print(f"{filename} is not a file!")
-            exit(1)
+            sys.exit(1)
 
         skills = []
         current_skill = None
