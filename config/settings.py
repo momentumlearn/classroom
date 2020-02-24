@@ -26,6 +26,8 @@ env = environ.Env(
     DJANGO_SECRET_KEY=(str,
                        '-*vs66ys__8fn#p9i!t6f3zepdgtn(@d%6*j&6cm)tftpv4cko'))
 
+environ.Env.read_env()
+
 # Build paths inside the project like this: BASE_DIR / path
 BASE_DIR = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
