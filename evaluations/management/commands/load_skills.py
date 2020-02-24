@@ -22,7 +22,7 @@ class Command(BaseCommand):
 
         skills = []
         current_skill = None
-        with open(filename) as file:
+        with open(filename, encoding='utf-8', errors='ignore') as file:
             for line in file.readlines():
                 line = line.strip()
 
