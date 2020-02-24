@@ -12,8 +12,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 from pathlib import Path
-
 import environ
+
+# Build paths inside the project like this: BASE_DIR / path
+BASE_DIR = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False),
@@ -26,10 +29,8 @@ env = environ.Env(
     DJANGO_SECRET_KEY=(str,
                        '-*vs66ys__8fn#p9i!t6f3zepdgtn(@d%6*j&6cm)tftpv4cko'))
 
-environ.Env.read_env()
-
-# Build paths inside the project like this: BASE_DIR / path
-BASE_DIR = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if (Path(os.path.dirname(os.path.abspath(__file__))) / '.env').exists():
+    environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
