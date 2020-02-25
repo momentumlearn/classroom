@@ -55,6 +55,21 @@ def evaluations_instructor(request):
 
 
 @login_required
+@user_passes_test(is_student)
+def evaluation_student_detail(request, pk):
+    evaluation = get_object_or_404(request.user.evaluations, pk=pk)
+    skill_evaluations = evaluation.skill_evaluations.order_by("skill__name")
+    return render(
+        request, "evaluations/evaluation_detail.html", {
+            "evaluation": evaluation,
+            "js_data": {
+                "skills_labels": [e.skill.name for e in skill_evaluations],
+                "skills_scores": [e.score for e in skill_evaluations]
+            }
+        })
+
+
+@login_required
 @user_passes_test(is_instructor)
 def evaluation_report(request, pk):
     scheduled_evaluation = get_object_or_404(

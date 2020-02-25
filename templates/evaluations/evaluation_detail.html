@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Evaluation - {{ evaluation.evaluated_at|date:"Y-m-d" }}</h2>
+  
+  <h3>Skill Rankings</h3>
+  <canvas id="skills-chart" width="40" height="20"></canvas>
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+  let data = contextData
+  let salmon = getComputedStyle(document.body).getPropertyValue('--salmon')
+
+  let skillsChart = new Chart(document.querySelector("#skills-chart"), {
+    type: 'horizontalBar',
+    data: {
+      labels: data.skills_labels,
+      datasets: [
+        {
+          label: "Skill Level",
+          data: data.skills_scores,
+          backgroundColor: salmon
+        }
+      ]
+    },
+    options: {
+      scales: {
+        xAxes: [{
+          ticks: {
+            beginAtZero: true,
+            stepSize: 1
+          }
+        }]
+      }
+    }
+  })
+</script>
+{% endblock %}

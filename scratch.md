@@ -1,14 +1,6 @@
 * /
   * if logged in, redirect to /evaluations/
-* /evaluations/schedule/
-  * instructor only
-  * form
-    * team
-    * date
-    * series of checkboxes to choose topics to evaluate
-* /evaluations/
-  * student view
-  * show previous evaluations and scheduled evaluations
+
 * /evaluations/:pk/
   * student view
   * your evaluation from that date, review

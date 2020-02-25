@@ -2,18 +2,34 @@
 
 {% block content %}
   <h2>Scheduled Evaluations</h2>
-  <ul>
-  {% for evaluation in request.user.scheduled_evaluations.all %}
-    <li><a href="{% url 'take_evaluation' pk=evaluation.pk %}">Scheduled on {{ evaluation.start_date }}</a></li>
-  {% endfor %}
-  </ul>
+  
+  {% if request.user.scheduled_evaluations.all %}
+    <ul>
+    {% for evaluation in request.user.scheduled_evaluations.all %}
+      <li><a href="{% url 'take_evaluation' pk=evaluation.pk %}">Scheduled on {{ evaluation.start_date }}</a></li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>No evaluations currently scheduled.</p>
+  {% endif %}
+  
 
   <h2>Completed Evaluations</h2>
-  <ul>
-  {% for evaluation in evaluations %}
-    <li>Scheduled on {{ evaluation.scheduled_by.start_date }}; completed on {{ evaluation.evaluated_at|date:"Y-m-d" }}</li>
-  {% endfor %}
-  </ul>
+  
+  {% if evaluations %}
+    <ul>
+    {% for evaluation in evaluations %}
+      <li>
+        <a href="{% url 'evaluation_detail' pk=evaluation.pk %}">
+          Scheduled on {{ evaluation.scheduled_by.start_date }}; completed on {{ evaluation.evaluated_at|date:"Y-m-d" }}
+        </a>
+      </li>
+    {% endfor %}
+    </ul>
+  {% else %}    
+    <p>No evaluations completed.</p>
+  {% endif %}
+  
 
   <h2>Your Evaluation Record</h2>
 
@@ -27,7 +43,7 @@
 {% block scripts %}
 <script>
   let data = contextData
-  let hotPink = getComputedStyle(document.body).getPropertyValue('--hot-pink')
+  let salmon = getComputedStyle(document.body).getPropertyValue('--salmon')
 
   let skillsChart = new Chart(document.querySelector("#skills-chart"), {
     type: 'horizontalBar',
@@ -37,7 +53,7 @@
         {
           label: "Skill Level",
           data: data.skills_scores,
-          backgroundColor: hotPink
+          backgroundColor: salmon
         }
       ]
     },
@@ -63,7 +79,7 @@
           label: "Average Score",
           data: data.evaluation_avgs,
           fill: false,
-          borderColor: hotPink
+          borderColor: salmon
         }
       ]
     },
