@@ -26,9 +26,12 @@ def evaluations(request):
 def evaluations_student(request):
     evaluations = request.user.evaluations.order_by('evaluated_at').annotate(
         avg_score=Avg('skill_evaluations__score'))
-    last_evaluation = request.user.evaluations.order_by('-evaluated_at')[0]
-    skill_evaluations = last_evaluation.skill_evaluations.order_by(
-        'skill__name')
+    last_evaluation = request.user.evaluations.order_by('-evaluated_at').first()
+    if last_evaluation:
+        skill_evaluations = last_evaluation.skill_evaluations.order_by(
+            'skill__name')
+    else:
+        skill_evaluations = []
     return render(
         request, "evaluations/evaluations_student.html", {
             "evaluations": evaluations,
