@@ -38,7 +38,7 @@ class Evaluation(models.Model):
 class SkillEvaluation(models.Model):
     evaluation = models.ForeignKey(to=Evaluation,
                                    related_name='skill_evaluations',
-                                   on_delete=models.PROTECT)
+                                   on_delete=models.CASCADE)
     skill = models.ForeignKey(to=Skill,
                               related_name='skill_evaluations',
                               on_delete=models.PROTECT)
