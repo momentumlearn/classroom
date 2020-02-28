@@ -1,8 +1,8 @@
-from django.db import models
 from django.contrib.auth import get_user_model
-# from django.contrib.postgres.fields import ArrayField
+from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db import models
 from django_better_admin_arrayfield.models.fields import ArrayField
-from django.core.validators import MinValueValidator, MaxValueValidator
+
 from users.models import Team
 
 User = get_user_model()
