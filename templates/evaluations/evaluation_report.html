@@ -5,7 +5,40 @@
   <h3><a href="{% url 'team_report' pk=scheduled_evaluation.team.pk %}">{{ scheduled_evaluation.team }}</a> - {{ scheduled_evaluation.start_date }}</h3>
   <ul>
     {% for skill in skills %}
-    <li>{{ skill.name }} - {{ skill.count }} - {{ skill.avg }}</li>
+    <li>{{ skill.name }} - {{ skill.count }} - {{ skill.avg|floatformat:"-2" }}</li>
     {% endfor %}
   </ul>
+  <canvas id="skills-chart" width="40" height="20"></canvas>
 {% endblock %}
+
+{% block scripts %}
+<script>
+  let data = contextData
+  let salmon = getComputedStyle(document.body).getPropertyValue('--salmon')
+
+  let skillsChart = new Chart(document.querySelector("#skills-chart"), {
+    type: 'horizontalBar',
+    data: {
+      labels: data.skills_labels,
+      datasets: [
+        {
+          label: "Skill Level",
+          data: data.skills_scores,
+          backgroundColor: salmon
+        }
+      ]
+    },
+    options: {
+      scales: {
+        xAxes: [{
+          ticks: {
+            beginAtZero: true,
+            stepSize: 1
+          }
+        }]
+      }
+    }
+  })
+</script>
+{% endblock %}
+

@@ -90,10 +90,15 @@ def evaluation_report(request, pk):
                 skill_evaluations__evaluation__scheduled_by=scheduled_evaluation
             )))
 
-    return render(request, "evaluations/evaluation_report.html", {
-        "scheduled_evaluation": scheduled_evaluation,
-        "skills": skills
-    })
+    return render(
+        request, "evaluations/evaluation_report.html", {
+            "scheduled_evaluation": scheduled_evaluation,
+            "skills": skills,
+            "js_data": {
+                "skills_labels": [s.name for s in skills],
+                "skills_scores": [round(s.avg, 2) for s in skills]
+            }
+        })
 
 
 @login_required
