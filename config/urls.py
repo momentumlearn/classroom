@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from evaluations import views as evaluations_views
+from users import views as users_views
 from django.views.generic.base import RedirectView
 from django.conf import settings
 
@@ -40,9 +41,10 @@ urlpatterns = [
     path('evaluations/report/<int:pk>/',
          evaluations_views.evaluation_report,
          name='evaluation_report'),
-    path('team/report/<int:pk>/',
+    path('team/<int:pk>/report/',
          evaluations_views.team_report,
          name='team_report'),
+    path('team/<int:pk>/', users_views.team_detail, name='team_detail'),
     path('health/', evaluations_views.health_check, name='health_check'),
     path('sentry-debug/', trigger_error),
     path('', RedirectView.as_view(url='/evaluations/'), name='home'),

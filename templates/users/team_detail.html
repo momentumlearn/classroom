@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>{{ team }}</h2>
+
+  <ul>
+    <li><a href="{% url 'team_report' pk=team.pk %}">Team Evaluation Report</a></li>
+  </ul>  
+{% endblock %}

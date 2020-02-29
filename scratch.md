@@ -17,3 +17,7 @@
   * see report for each topic 
     * distro of levels
     * with histogram?
+
+* /team/:pk/
+  * add members, invite people
+  * see overall report
