@@ -5,5 +5,17 @@
 
   <ul>
     <li><a href="{% url 'team_report' pk=team.pk %}">Team Evaluation Report</a></li>
-  </ul>  
+  </ul>
+
+  <h3>Team Members</h3>  
+  {% if team.members.all %}
+    <ul>
+      {% for member in team.members.all %}
+        <li>{{ member }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No team members.</p>
+  {% endif %}
+  <p><a href="{% url 'team_invite' pk=team.pk %}">Invite new team members</a></p>
 {% endblock %}

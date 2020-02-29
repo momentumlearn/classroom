@@ -1,5 +1,13 @@
-from django.db import models
+from allauth.account.forms import EmailAwarePasswordResetTokenGenerator
+from allauth.account.utils import user_pk_to_url_str
+from allauth.utils import build_absolute_uri
 from django.contrib.auth.models import AbstractUser
+from django.contrib.sites.shortcuts import get_current_site
+from django.db import models
+from django.urls import reverse
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
+from django.conf import settings
 
 USER_TYPES = {
     'student': 1,
@@ -49,6 +57,27 @@ class User(AbstractUser):
 
         return self.team.scheduled_evaluations.exclude(
             pk__in=[e.scheduled_by.pk for e in self.evaluations.all()])
+
+    def send_new_account_reset_password_email(self, request=None):
+        """
+        When we create a new account for a user, we need to send them an email
+        so they can reset their password.
+        """
+        token_generator = EmailAwarePasswordResetTokenGenerator()
+        temp_key = token_generator.make_token(self)
+        path = reverse("account_reset_password_from_key",
+                       kwargs=dict(uidb36=user_pk_to_url_str(self),
+                                   key=temp_key))
+        url = build_absolute_uri(request, path)
+        current_site = get_current_site(request)
+        context = {
+            "current_site": current_site,
+            "user": self,
+            "password_reset_url": url
+        }
+        message = render_to_string("users/reset_password_email.txt", context)
+        send_mail(f"You have a new account at {current_site.name}", message,
+                  settings.DEFAULT_FROM_EMAIL, [self.email])
 
     def __str__(self):
         return self.email
