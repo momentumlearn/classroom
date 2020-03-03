@@ -27,7 +27,7 @@
   {% if members %}
     <ul>
       {% for member in members %}
-        <li>{{ member }}</li>
+        <li><a href="{% url 'student_detail' pk=member.pk %}">{{ member }}</a></li>
       {% endfor %}
     </ul>
   {% else %}

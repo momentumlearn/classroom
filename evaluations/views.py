@@ -1,14 +1,17 @@
 from datetime import date
 
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.db.models import Avg, Q, Count, F
+from django.db.models import Avg, Count, F, Q
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
-from users.models import is_instructor, is_student, Team
+from users.models import Team, is_instructor, is_student
 
 from .forms import EvaluationForm, ScheduledEvaluationForm
-from .models import ScheduledEvaluation, Skill, Evaluation
+from .models import Evaluation, ScheduledEvaluation, Skill
+
+User = get_user_model()
 
 
 def health_check(request):
@@ -58,9 +61,38 @@ def evaluations_instructor(request):
 
 
 @login_required
-@user_passes_test(is_student)
+@user_passes_test(is_instructor)
+def student_detail(request, pk):
+    student = get_object_or_404(User, pk=pk)
+    evaluations = student.evaluations.order_by('evaluated_at').annotate(
+        avg_score=Avg('skill_evaluations__score'))
+    last_evaluation = student.evaluations.order_by('-evaluated_at').first()
+    if last_evaluation:
+        skill_evaluations = last_evaluation.skill_evaluations.order_by(
+            'skill__name')
+    else:
+        skill_evaluations = []
+    return render(
+        request, "evaluations/student_detail.html", {
+            "student": student,
+            "evaluations": evaluations,
+            "js_data": {
+                "skills_labels": [e.skill.name for e in skill_evaluations],
+                "skills_scores": [e.score for e in skill_evaluations],
+                "evaluation_dates":
+                    [e.evaluated_at.strftime("%Y-%m-%d") for e in evaluations],
+                "evaluation_avgs": [e.avg_score for e in evaluations]
+            }
+        })
+
+
+@login_required
+@user_passes_test(lambda u: is_student(u) or is_instructor(u))
 def evaluation_student_detail(request, pk):
-    evaluation = get_object_or_404(request.user.evaluations, pk=pk)
+    if is_instructor(request.user):
+        evaluation = get_object_or_404(Evaluation, pk=pk)
+    else:
+        evaluation = get_object_or_404(request.user.evaluations, pk=pk)
     skill_evaluations = evaluation.skill_evaluations.order_by("skill__name")
     return render(
         request, "evaluations/evaluation_detail.html", {

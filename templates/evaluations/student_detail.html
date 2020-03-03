@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Report for {{ student }} - <a href="{% url 'team_detail' pk=student.team.pk %}">{{ student.team }}</a></h2>
+
+  <h3>Completed Evaluations</h3>
+  
+  {% if evaluations %}
+    <ul>
+    {% for evaluation in evaluations %}
+      <li>
+        <a href="{% url 'evaluation_detail' pk=evaluation.pk %}">
+          Scheduled on {{ evaluation.scheduled_by.start_date }}; completed on {{ evaluation.evaluated_at|date:"Y-m-d" }}
+        </a>
+      </li>
+    {% endfor %}
+    </ul>
+
+    <h3>Current Skill Rankings</h3>
+    <canvas id="skills-chart" width="40" height="20"></canvas>
+
+    <h3>Average Evaluation Score over Time</h3>
+    <canvas id="evaluations-chart" width="400" height="200"></canvas>
+  {% else %}    
+    <p>No evaluations completed.</p>
+  {% endif %}
+  
+  
+{% endblock %}
+
+{% block scripts %}
+<script>
+  let data = contextData
+  makeSkillsChart(document.querySelector("#skills-chart"), data.skills_labels, data.skills_scores)  
+
+  let evalChart = new Chart(document.querySelector("#evaluations-chart"), {
+    type: 'line',    
+    data: {
+      labels: data.evaluation_dates,
+      datasets: [
+        {
+          label: "Average Score",
+          data: data.evaluation_avgs,
+          fill: false,
+          borderColor: getCssVar('salmon')
+        }
+      ]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            suggestedMax: 4
+          }
+        }],
+        xAxes: [{
+          offset: true
+        }]
+      }
+    }
+  })
+</script>
+{% endblock %}
