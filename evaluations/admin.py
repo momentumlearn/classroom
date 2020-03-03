@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django_better_admin_arrayfield.admin.mixins import DynamicArrayMixin
+from adminsortable.admin import SortableAdmin
 from .models import Skill, SkillEvaluation, Evaluation, ScheduledEvaluation
 
 
-class SkillAdmin(admin.ModelAdmin, DynamicArrayMixin):
+class SkillAdmin(SortableAdmin, DynamicArrayMixin):
     pass
 
 

@@ -2,16 +2,23 @@ from django.contrib.auth import get_user_model
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django_better_admin_arrayfield.models.fields import ArrayField
+from adminsortable.models import SortableMixin
 
 from users.models import Team
 
 User = get_user_model()
 
 
-class Skill(models.Model):
+class Skill(SortableMixin):
     name = models.CharField(max_length=150, unique=True)
     description = models.TextField(blank=True, null=True)
     levels = ArrayField(base_field=models.CharField(max_length=500), size=4)
+    order = models.PositiveIntegerField(default=0,
+                                        editable=False,
+                                        db_index=True)
+
+    class Meta:
+        ordering = ['order']
 
     def __str__(self):
         return self.name
@@ -33,6 +40,9 @@ class Evaluation(models.Model):
                              related_name='evaluations',
                              on_delete=models.PROTECT)
     evaluated_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user} - {self.evaluated_at}"
 
 
 class SkillEvaluation(models.Model):

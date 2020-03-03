@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'django_better_admin_arrayfield.apps.DjangoBetterAdminArrayfieldConfig',
     'crispy_forms',
+    'adminsortable',
     'debug_toolbar',
 
     # My apps
