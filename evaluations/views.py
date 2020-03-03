@@ -126,7 +126,7 @@ def team_report(request, pk):
                 "skills_labels": [s.name for s in skills],
                 "skills_scores":
                     [round(s.avg, 2) if s.avg else None for s in skills],
-                "evaluations": [e for e in evaluation_by_date]
+                "evaluations": list(evaluation_by_date)
             }
         })
 
