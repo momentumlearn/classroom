@@ -1,7 +1,8 @@
-from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
-from .models import ScheduledEvaluation, Evaluation, SkillEvaluation
+from django import forms
+
+from .models import Evaluation, ScheduledEvaluation, SkillEvaluation
 
 
 class BetterDateInput(forms.DateInput):

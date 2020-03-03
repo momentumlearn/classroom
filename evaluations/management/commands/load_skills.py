@@ -1,7 +1,9 @@
-from django.core.management.base import BaseCommand
-import re
 import os
+import re
 import sys
+
+from django.core.management.base import BaseCommand
+
 from evaluations.models import Skill
 
 

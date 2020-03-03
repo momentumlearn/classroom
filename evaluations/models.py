@@ -1,8 +1,8 @@
+from adminsortable.models import SortableMixin
 from django.contrib.auth import get_user_model
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django_better_admin_arrayfield.models.fields import ArrayField
-from adminsortable.models import SortableMixin
 
 from users.models import Team
 
