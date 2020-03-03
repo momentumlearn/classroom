@@ -1,12 +1,20 @@
-from django.shortcuts import get_object_or_404, redirect, render
-from .models import Team
-from .forms import TeamInvitationForm
+from datetime import date
+
 from django.contrib import messages
+from django.shortcuts import get_object_or_404, redirect, render
+
+from .forms import TeamInvitationForm
+from .models import Team
 
 
 def team_detail(request, pk):
     team = get_object_or_404(Team, pk=pk)
-    return render(request, "users/team_detail.html", {"team": team})
+    previous_evaluations = team.scheduled_evaluations.filter(
+        start_date__lt=date.today()).order_by('-start_date')
+    return render(request, "users/team_detail.html", {
+        "team": team,
+        "previous_evaluations": previous_evaluations
+    })
 
 
 def team_invite(request, pk):

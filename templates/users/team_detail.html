@@ -4,8 +4,24 @@
   <h2>{{ team }}</h2>
 
   <ul>
-    <li><a href="{% url 'team_report' pk=team.pk %}">Team Evaluation Report</a></li>
+    <li><a href="{% url 'team_report' pk=team.pk %}">Overall Evaluation Report</a></li>
   </ul>
+
+  <h3>Previous Evaluations</h3>
+
+  {% if previous_evaluations %}
+  <ul>
+    {% for evaluation in previous_evaluations %}
+    <li>
+      <a href="{% url 'evaluation_report' pk=evaluation.pk %}">
+      {{ evaluation.start_date }} - {{ evaluation.team }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No previous evaluations.</p>
+  {% endif %}
 
   <h3>Team Members</h3>  
   {% if team.members.all %}
