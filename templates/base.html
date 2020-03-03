@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{% static 'css/tachyons.min.css' %}">  
   <link rel="stylesheet" href="{% static 'css/classroom.css' %}">
   <script src="{% static 'js/chart.js' %}"></script>
+  <script src="{% static 'js/classroom.js' %}"></script>
   {{ js_data|json_script:"context-data" }}
   <script>
   let contextData = window.contextData = JSON.parse(document.getElementById('context-data').textContent)

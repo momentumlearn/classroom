@@ -1,10 +1,45 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Team Report - {{ team }}</h2>
-  <ul>
-    {% for skill in skills %}
-    <li>{{ skill.name }} - {{ skill.count }} - {{ skill.avg }}</li>
-    {% endfor %}
-  </ul>
+  <h2>Team Report - <a href="{% url 'team_detail' pk=team.pk %}">{{ team }}</a></h2>
+  <h3>Skill Rankings</h3>
+  <canvas id="skills-chart" width="40" height="20"></canvas>
+
+  <h3>Average Evaluation Score over Time</h3>
+  <canvas id="evaluations-chart" width="400" height="200"></canvas>
 {% endblock %}
+
+{% block scripts %}
+<script>
+  makeSkillsChart(document.querySelector("#skills-chart"), contextData.skills_labels, contextData.skills_scores)  
+
+  let evalChart = new Chart(document.querySelector("#evaluations-chart"), {
+    type: 'line',    
+    data: {
+      labels: contextData.evaluations.map(e => e.date),
+      datasets: [
+        {
+          label: "Average Score",
+          data: contextData.evaluations.map(e => e.avg),
+          fill: false,
+          borderColor: getCssVar('salmon')
+        }
+      ]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            suggestedMax: 4
+          }
+        }],
+        xAxes: [{
+          offset: true
+        }]
+      }
+    }
+  })
+</script>
+{% endblock %}
+

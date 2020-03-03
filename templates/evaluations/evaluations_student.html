@@ -43,32 +43,7 @@
 {% block scripts %}
 <script>
   let data = contextData
-  let salmon = getComputedStyle(document.body).getPropertyValue('--salmon')
-
-  let skillsChart = new Chart(document.querySelector("#skills-chart"), {
-    type: 'horizontalBar',
-    data: {
-      labels: data.skills_labels,
-      datasets: [
-        {
-          label: "Skill Level",
-          data: data.skills_scores,
-          backgroundColor: salmon
-        }
-      ]
-    },
-    options: {
-      scales: {
-        xAxes: [{
-          ticks: {
-            beginAtZero: true,
-            stepSize: 1
-          }
-        }]
-      }
-    }
-  })
-
+  makeSkillsChart(document.querySelector("#skills-chart"), data.skills_labels, data.skills_scores)  
 
   let evalChart = new Chart(document.querySelector("#evaluations-chart"), {
     type: 'line',    
@@ -79,7 +54,7 @@
           label: "Average Score",
           data: data.evaluation_avgs,
           fill: false,
-          borderColor: salmon
+          borderColor: getCssVar('salmon')
         }
       ]
     },

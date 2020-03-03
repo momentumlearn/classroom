@@ -1,14 +1,14 @@
 from datetime import date
 
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.db.models import Avg, Q, Count
+from django.db.models import Avg, Q, Count, F
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
 from users.models import is_instructor, is_student, Team
 
 from .forms import EvaluationForm, ScheduledEvaluationForm
-from .models import ScheduledEvaluation, Skill
+from .models import ScheduledEvaluation, Skill, Evaluation
 
 
 def health_check(request):
@@ -96,7 +96,8 @@ def evaluation_report(request, pk):
             "skills": skills,
             "js_data": {
                 "skills_labels": [s.name for s in skills],
-                "skills_scores": [round(s.avg, 2) for s in skills]
+                "skills_scores":
+                    [round(s.avg, 2) if s.avg else None for s in skills]
             }
         })
 
@@ -110,10 +111,24 @@ def team_report(request, pk):
             count=Count('skill_evaluations'),
             avg=Avg('skill_evaluations__score'))
 
-    return render(request, "evaluations/team_report.html", {
-        "team": team,
-        "skills": skills
-    })
+    evaluation_by_date = Evaluation.objects \
+        .filter(scheduled_by__team=team) \
+        .annotate(date=F('scheduled_by__start_date')) \
+        .order_by('date') \
+        .values('date') \
+        .annotate(avg=Avg('skill_evaluations__score'))
+
+    return render(
+        request, "evaluations/team_report.html", {
+            "team": team,
+            "skills": skills,
+            "js_data": {
+                "skills_labels": [s.name for s in skills],
+                "skills_scores":
+                    [round(s.avg, 2) if s.avg else None for s in skills],
+                "evaluations": [e for e in evaluation_by_date]
+            }
+        })
 
 
 @login_required
