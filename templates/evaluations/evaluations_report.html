@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Evaluations Report for {{ request.user }}</h2>
+
+<table class="eval-report">
+  <thead>
+    <tr>
+      <th></th>
+      {% for date in report.dates %}
+        <th class="eval-date">{{ date|date:"Y-m-d" }}</th>
+      {% endfor %}    
+    </tr>
+  </thead>
+  <tbody>
+    {% for skill, scores in report.skills.items %}
+      <tr>
+        <th class="eval-skill">{{ skill }}</th>
+        {% for score in scores %}
+          <td>{{ score }}</td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

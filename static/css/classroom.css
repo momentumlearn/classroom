@@ -53,6 +53,36 @@ label.checkbox input, label.radio input {
   margin-right: 0.5rem;
 }
 
+.eval-report {
+  table-layout: fixed;
+  max-width: 100%;
+  border-collapse: collapse;
+  border: 1px solid black;  
+}
+
+.eval-report th, .eval-report td {
+  border-left: 1px solid #999;
+  border-right: 1px solid #999;
+  padding: 0.25rem 0.5rem;
+}
+
+.eval-report thead {
+  background-color: #DDDDDD;
+  border-bottom: 1px solid #999;
+}
+
+.eval-report tbody tr:nth-child(even) {
+  background-color: #EFEFEF;
+}
+
+.eval-report tbody tr:nth-child(odd) {
+  background-color: #FFFFFF;
+}
+
+.eval-report .eval-skill {
+  text-align: right;
+}
+
 @media screen and (min-width: 30em) {
   #div_id_skills .controls {
     columns: 2;

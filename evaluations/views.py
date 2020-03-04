@@ -21,74 +21,53 @@ def health_check(request):
 @login_required
 @user_passes_test(lambda u: is_student(u) or is_instructor(u))
 def evaluations(request):
-    if request.user.is_student():
-        return evaluations_student(request)
-    return evaluations_instructor(request)
+    """
+    For students, show a list of their upcoming evaluations and previous evaluations.
+    For instructors, show them all upcoming and previous evaluations.
+    """
 
+    def evaluations_student():
+        evaluations = request.user.evaluations.order_by(
+            'evaluated_at').annotate(avg_score=Avg('skill_evaluations__score'))
+        last_evaluation = request.user.evaluations.order_by(
+            '-evaluated_at').first()
+        if last_evaluation:
+            skill_evaluations = last_evaluation.skill_evaluations.order_by(
+                'skill__name')
+        else:
+            skill_evaluations = []
+        return render(
+            request, "evaluations/evaluations_student.html", {
+                "evaluations": evaluations,
+                "js_data": {
+                    "skills_labels": [e.skill.name for e in skill_evaluations],
+                    "skills_scores": [e.score for e in skill_evaluations],
+                    "evaluation_dates": [
+                        e.evaluated_at.strftime("%Y-%m-%d") for e in evaluations
+                    ],
+                    "evaluation_avgs": [e.avg_score for e in evaluations]
+                }
+            })
 
-def evaluations_student(request):
-    evaluations = request.user.evaluations.order_by('evaluated_at').annotate(
-        avg_score=Avg('skill_evaluations__score'))
-    last_evaluation = request.user.evaluations.order_by('-evaluated_at').first()
-    if last_evaluation:
-        skill_evaluations = last_evaluation.skill_evaluations.order_by(
-            'skill__name')
-    else:
-        skill_evaluations = []
-    return render(
-        request, "evaluations/evaluations_student.html", {
-            "evaluations": evaluations,
-            "js_data": {
-                "skills_labels": [e.skill.name for e in skill_evaluations],
-                "skills_scores": [e.score for e in skill_evaluations],
-                "evaluation_dates":
-                    [e.evaluated_at.strftime("%Y-%m-%d") for e in evaluations],
-                "evaluation_avgs": [e.avg_score for e in evaluations]
-            }
-        })
+    def evaluations_instructor():
+        scheduled_evaluations = ScheduledEvaluation.objects.filter(
+            start_date__gte=date.today()).order_by('start_date')
+        previous_evaluations = ScheduledEvaluation.objects.filter(
+            start_date__lt=date.today()).order_by('-start_date')
+        return render(
+            request, "evaluations/evaluations_instructor.html", {
+                "scheduled_evaluations": scheduled_evaluations,
+                "previous_evaluations": previous_evaluations
+            })
 
-
-def evaluations_instructor(request):
-    scheduled_evaluations = ScheduledEvaluation.objects.filter(
-        start_date__gte=date.today()).order_by('start_date')
-    previous_evaluations = ScheduledEvaluation.objects.filter(
-        start_date__lt=date.today()).order_by('-start_date')
-    return render(
-        request, "evaluations/evaluations_instructor.html", {
-            "scheduled_evaluations": scheduled_evaluations,
-            "previous_evaluations": previous_evaluations
-        })
-
-
-@login_required
-@user_passes_test(is_instructor)
-def student_detail(request, pk):
-    student = get_object_or_404(User, pk=pk)
-    evaluations = student.evaluations.order_by('evaluated_at').annotate(
-        avg_score=Avg('skill_evaluations__score'))
-    last_evaluation = student.evaluations.order_by('-evaluated_at').first()
-    if last_evaluation:
-        skill_evaluations = last_evaluation.skill_evaluations.order_by(
-            'skill__name')
-    else:
-        skill_evaluations = []
-    return render(
-        request, "evaluations/student_detail.html", {
-            "student": student,
-            "evaluations": evaluations,
-            "js_data": {
-                "skills_labels": [e.skill.name for e in skill_evaluations],
-                "skills_scores": [e.score for e in skill_evaluations],
-                "evaluation_dates":
-                    [e.evaluated_at.strftime("%Y-%m-%d") for e in evaluations],
-                "evaluation_avgs": [e.avg_score for e in evaluations]
-            }
-        })
+    if request.user.is_instructor():
+        return evaluations_instructor()
+    return evaluations_student()
 
 
 @login_required
 @user_passes_test(lambda u: is_student(u) or is_instructor(u))
-def evaluation_student_detail(request, pk):
+def evaluation_detail(request, pk):
     if is_instructor(request.user):
         evaluation = get_object_or_404(Evaluation, pk=pk)
     else:
@@ -102,6 +81,38 @@ def evaluation_student_detail(request, pk):
                 "skills_scores": [e.score for e in skill_evaluations]
             }
         })
+
+
+@login_required
+@user_passes_test(is_student)
+def evaluations_report(request):
+    evaluations = request.user.evaluations.order_by('evaluated_at')
+    all_skills_evaluated = Skill.objects.filter(
+        skill_evaluations__evaluation__user=request.user).distinct()
+
+    report = {
+        "dates": [],
+        "skills": {s.name: None for s in all_skills_evaluated}
+    }
+
+    print([s.name for s in all_skills_evaluated])
+
+    for evaluation in evaluations:
+        report["dates"].append(evaluation.evaluated_at)
+        for skill in all_skills_evaluated:
+            skill_eval = evaluation.skill_evaluations.filter(
+                skill=skill).first()
+            if report["skills"][skill.name] is None:
+                report["skills"][skill.name] = []
+            if skill_eval:
+                report["skills"][skill.name].append(skill_eval.score)
+            else:
+                report["skills"][skill.name].append('-')
+
+    print(report)
+
+    return render(request, "evaluations/evaluations_report.html",
+                  {"report": report})
 
 
 @login_required
@@ -193,3 +204,29 @@ def take_evaluation(request, pk):
 
     form.helper.form_action = reverse('take_evaluation', kwargs={'pk': pk})
     return render(request, "evaluations/take_evaluation.html", {"form": form})
+
+
+@login_required
+@user_passes_test(is_instructor)
+def student_detail(request, pk):
+    student = get_object_or_404(User, pk=pk)
+    evaluations = student.evaluations.order_by('evaluated_at').annotate(
+        avg_score=Avg('skill_evaluations__score'))
+    last_evaluation = student.evaluations.order_by('-evaluated_at').first()
+    if last_evaluation:
+        skill_evaluations = last_evaluation.skill_evaluations.order_by(
+            'skill__name')
+    else:
+        skill_evaluations = []
+    return render(
+        request, "evaluations/student_detail.html", {
+            "student": student,
+            "evaluations": evaluations,
+            "js_data": {
+                "skills_labels": [e.skill.name for e in skill_evaluations],
+                "skills_scores": [e.score for e in skill_evaluations],
+                "evaluation_dates":
+                    [e.evaluated_at.strftime("%Y-%m-%d") for e in evaluations],
+                "evaluation_avgs": [e.avg_score for e in evaluations]
+            }
+        })
