@@ -1,7 +1,10 @@
 :root {
-  /* --hot-pink: #ff41b4; */
-  --salmon: #ED6168;
-  --navy: #001b44;
+  --salmon: #e95d68;
+  --navy: #1a0a6e;
+  --black: #090326;
+  --green: #1da57e;
+  --blue: #5cc8d8;
+  --purple: #6e56b1;
 }
 
 /* .sans-serif {
@@ -29,9 +32,9 @@ code, .code {
 
 .submit-button {
   border-style: solid;
-  border-width: .25rem;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+  border-width: 0.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
   background-color: white;
@@ -43,13 +46,15 @@ code, .code {
   color: white;
 }
 
-label.checkbox, label.radio {
+label.checkbox,
+label.radio {
   display: block;
   margin-left: 0;
   margin-bottom: 0.25rem;
 }
 
-label.checkbox input, label.radio input {
+label.checkbox input,
+label.radio input {
   margin-right: 0.5rem;
 }
 
@@ -57,26 +62,27 @@ label.checkbox input, label.radio input {
   table-layout: fixed;
   max-width: 100%;
   border-collapse: collapse;
-  border: 1px solid black;  
+  border: 1px solid black;
 }
 
-.eval-report th, .eval-report td {
+.eval-report th,
+.eval-report td {
   border-left: 1px solid #999;
   border-right: 1px solid #999;
   padding: 0.25rem 0.5rem;
 }
 
 .eval-report thead {
-  background-color: #DDDDDD;
+  background-color: #dddddd;
   border-bottom: 1px solid #999;
 }
 
 .eval-report tbody tr:nth-child(even) {
-  background-color: #EFEFEF;
+  background-color: #efefef;
 }
 
 .eval-report tbody tr:nth-child(odd) {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .eval-report .eval-skill {
@@ -86,7 +92,7 @@ label.checkbox input, label.radio input {
 @media screen and (min-width: 30em) {
   #div_id_skills .controls {
     columns: 2;
-  }  
+  }
 }
 
 @media screen and (min-width: 60em) {
@@ -96,12 +102,11 @@ label.checkbox input, label.radio input {
 }
 
 .pv2 {
-    padding-top: .5rem;
-    padding-bottom: .5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .ph3 {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
-

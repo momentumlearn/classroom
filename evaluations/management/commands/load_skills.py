@@ -11,10 +11,10 @@ class Command(BaseCommand):
     help = "Load skills from a file."
 
     def add_arguments(self, parser):
-        parser.add_argument('filename')
+        parser.add_argument("filename")
 
     def handle(self, *args, **options):
-        filename = options['filename']
+        filename = options["filename"]
         if not os.path.exists(filename):
             print(f"{filename} does not exist!")
             sys.exit(1)
@@ -24,7 +24,7 @@ class Command(BaseCommand):
 
         skills = []
         current_skill = None
-        with open(filename, encoding='utf-8', errors='ignore') as file:
+        with open(filename, encoding="utf-8", errors="ignore") as file:
             for line in file.readlines():
                 line = line.strip()
 
@@ -42,18 +42,20 @@ class Command(BaseCommand):
 
                 if current_skill:
                     if re.match(r"^\d\.", line):
-                        current_skill['levels'].append(line[3:])
+                        current_skill["levels"].append(line[3:])
                     elif line.startswith("(") and line.endswith(")"):
-                        current_skill['description'] = line[1:-1]
+                        current_skill["description"] = line[1:-1]
 
         if current_skill:
             skills.append(current_skill)
 
         if skills:
             for skill_def in skills:
-                skill, _ = Skill.objects.get_or_create(name=skill_def['name'])
-                skill.levels = skill_def['levels']
-                if 'description' in skill_def:
-                    skill.description = skill_def['description']
+                skill, _ = Skill.objects.get_or_create(
+                    name=skill_def["name"], defaults={"levels": skill_def["levels"]}
+                )
+                skill.levels = skill_def["levels"]
+                if "description" in skill_def:
+                    skill.description = skill_def["description"]
                 skill.save()
         print(f"{len(skills)} skills loaded.")
