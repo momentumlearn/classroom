@@ -21,6 +21,8 @@ django-debug-toolbar = "*"
 django-environ = "*"
 sentry-sdk = "==0.14.1"
 django-admin-sortable = "*"
+gunicorn = "*"
+django-heroku = "*"
 
 [requires]
 python_version = "3.8"

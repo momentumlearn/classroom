@@ -13,32 +13,30 @@ class Skill(SortableMixin):
     name = models.CharField(max_length=150, unique=True)
     description = models.TextField(blank=True, null=True)
     levels = ArrayField(base_field=models.CharField(max_length=500), size=4)
-    order = models.PositiveIntegerField(default=0,
-                                        editable=False,
-                                        db_index=True)
+    order = models.PositiveIntegerField(default=0, editable=False, db_index=True)
 
     class Meta:
-        ordering = ['order']
+        ordering = ["order"]
 
     def __str__(self):
         return self.name
 
 
 class ScheduledEvaluation(models.Model):
-    team = models.ForeignKey(to=Team,
-                             on_delete=models.PROTECT,
-                             related_name="scheduled_evaluations")
+    team = models.ForeignKey(
+        to=Team, on_delete=models.PROTECT, related_name="scheduled_evaluations"
+    )
     start_date = models.DateField()
-    skills = models.ManyToManyField(to=Skill, related_name='+')
+    skills = models.ManyToManyField(to=Skill, related_name="+")
 
 
 class Evaluation(models.Model):
-    scheduled_by = models.ForeignKey(to=ScheduledEvaluation,
-                                     related_name='evaluations',
-                                     on_delete=models.PROTECT)
-    user = models.ForeignKey(to=User,
-                             related_name='evaluations',
-                             on_delete=models.PROTECT)
+    scheduled_by = models.ForeignKey(
+        to=ScheduledEvaluation, related_name="evaluations", on_delete=models.PROTECT
+    )
+    user = models.ForeignKey(
+        to=User, related_name="evaluations", on_delete=models.PROTECT
+    )
     evaluated_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -46,12 +44,12 @@ class Evaluation(models.Model):
 
 
 class SkillEvaluation(models.Model):
-    evaluation = models.ForeignKey(to=Evaluation,
-                                   related_name='skill_evaluations',
-                                   on_delete=models.CASCADE)
-    skill = models.ForeignKey(to=Skill,
-                              related_name='skill_evaluations',
-                              on_delete=models.PROTECT)
+    evaluation = models.ForeignKey(
+        to=Evaluation, related_name="skill_evaluations", on_delete=models.CASCADE
+    )
+    skill = models.ForeignKey(
+        to=Skill, related_name="skill_evaluations", on_delete=models.PROTECT
+    )
     score = models.PositiveSmallIntegerField(
-        validators=[MinValueValidator(1),
-                    MaxValueValidator(4)])
+        validators=[MinValueValidator(0), MaxValueValidator(4)]
+    )
