@@ -62,7 +62,7 @@ class TeamInvitationForm(forms.Form):
         for email in self.cleaned_data['email_addresses']:
             user, created = User.objects.get_or_create(
                 email=email,
-                defaults={'username': email.split('@')[0] + random_suffix(), 'is_staff': False})
+                defaults={'username': email.split('@')[0] + random_suffix()})
             if created:
                 user.set_unusable_password()
                 user.send_new_account_reset_password_email()
