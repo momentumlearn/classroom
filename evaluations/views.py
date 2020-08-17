@@ -6,7 +6,7 @@ from django.db.models import Avg, Count, F, Q
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
-from users.models import Team, is_instructor, is_student
+from users.models import Team, is_instructor, is_student, is_staff
 
 from .forms import EvaluationForm, ScheduledEvaluationForm
 from .models import Evaluation, ScheduledEvaluation, Skill
@@ -18,8 +18,6 @@ def health_check(request):
     return render(request, "evaluations/health_check.html")
 
 
-@login_required
-@user_passes_test(lambda u: u.is_instructor() or u.is_staff())
 @login_required
 def evaluations(request):
     """
@@ -70,7 +68,7 @@ def evaluations(request):
             },
         )
 
-    if request.user.is_instructor() or request.user.is_staff():
+    if is_instructor(request.user) or is_staff(request.user):
         return evaluations_instructor()
     return evaluations_student()
 
