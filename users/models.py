@@ -52,9 +52,6 @@ class User(AbstractUser):
     def is_instructor(self):
         return is_instructor(self)
 
-    def is_staff(self):
-        return is_staff(self)
-
     def scheduled_evaluations(self):
         if not self.is_student():
             return []
