@@ -41,6 +41,10 @@ class Command(BaseCommand):
                     }
 
                 if current_skill:
+                    if filename.startswith("v"):
+                        current_skill["version"] = int(filename[1:2])
+                    else:
+                        current_skill["version"] = 1
                     if re.match(r"^\d\.", line):
                         current_skill["levels"].append(line[3:])
                     elif line.startswith("(") and line.endswith(")"):
@@ -52,10 +56,12 @@ class Command(BaseCommand):
         if skills:
             for skill_def in skills:
                 skill, _ = Skill.objects.get_or_create(
-                    name=skill_def["name"], defaults={"levels": skill_def["levels"]}
+                    name=skill_def["name"], version=skill_def["version"], defaults={"levels": skill_def["levels"]}
                 )
                 skill.levels = skill_def["levels"]
                 if "description" in skill_def:
                     skill.description = skill_def["description"]
+                if "version" in skill_def:
+                    skill.version = skill_def["version"]
                 skill.save()
         print(f"{len(skills)} skills loaded.")

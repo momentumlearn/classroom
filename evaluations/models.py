@@ -10,10 +10,11 @@ User = get_user_model()
 
 
 class Skill(SortableMixin):
-    name = models.CharField(max_length=150, unique=True)
+    name = models.CharField(max_length=150)
     description = models.TextField(blank=True, null=True)
     levels = ArrayField(base_field=models.CharField(max_length=500), size=4)
     order = models.PositiveIntegerField(default=0, editable=False, db_index=True)
+    version = models.PositiveIntegerField(default=1)
 
     class Meta:
         ordering = ["order"]
