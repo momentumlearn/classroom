@@ -2,7 +2,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 from django import forms
 
-from .models import Evaluation, ScheduledEvaluation, SkillEvaluation
+from .models import Evaluation, ScheduledEvaluation, SkillEvaluation, Skill
 
 
 class BetterDateInput(forms.DateInput):
@@ -10,6 +10,12 @@ class BetterDateInput(forms.DateInput):
 
 
 class ScheduledEvaluationForm(forms.ModelForm):
+    skills = forms.ModelMultipleChoiceField(
+        required=False,
+        widget=forms.CheckboxSelectMultiple,
+        queryset=Skill.objects.filter(version=2)
+    )
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
@@ -18,7 +24,8 @@ class ScheduledEvaluationForm(forms.ModelForm):
         self.helper.form_action = "schedule_evaluation"
 
         self.helper.add_input(
-            Submit("submit", "Schedule evaluation", css_class="submit-button grow")
+            Submit("submit", "Schedule evaluation",
+                   css_class="submit-button grow")
         )
 
     class Meta:
@@ -44,9 +51,8 @@ class EvaluationForm(forms.Form):
                 label=skill.name,
                 required=True,
                 choices=(
-                    [(0, "0. This topic was not covered")]
-                    + [
-                        (i + 1, f"{i+1}. {level}")
+                    [
+                        (i, f"{i}. {level}")
                         for i, level in enumerate(skill.levels)
                     ]
                 ),
@@ -58,7 +64,8 @@ class EvaluationForm(forms.Form):
         self.helper.form_method = "post"
 
         self.helper.add_input(
-            Submit("submit", "Submit evaluation", css_class="submit-button grow")
+            Submit("submit", "Submit evaluation",
+                   css_class="submit-button grow")
         )
 
     def save(self, user):
