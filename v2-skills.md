@@ -4,7 +4,7 @@
 
 1. I am unfamiliar with navigating files using the command line.
 2. I can navigate the file system on the command line using commands like `pwd`, `cd`, and `ls`.
-3. I can create, manipulate, and navigate files (using commands like `cd`, `ls`, `cp`, `mv`, `rm`, `touch`,and `mkdir`).
+3. I can create, manipulate, and navigate files (using commands like `cd`, `ls`, `cp`, `mv`, `rm`, `touch`, and `mkdir`).
 4. I can create, manipulate, and navigate files, and I can read and use absolute and relative paths and shortcuts like `.`, `..`, and `~`.
 5. I can create, manipulate, and navigate files, and I can confidently read and use absolute and relative paths and shortcuts, and I understand the basics of read, write, and execute permissions.
 
