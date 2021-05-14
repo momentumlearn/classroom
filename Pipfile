@@ -24,6 +24,7 @@ sentry-sdk = "==0.14.1"
 django-admin-sortable = "*"
 gunicorn = "*"
 django-heroku = "*"
+stringcase = "*"
 
 [requires]
 python_version = "3.8"

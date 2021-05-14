@@ -1,10 +1,23 @@
 import os
 import re
 import sys
+import stringcase
 
 from django.core.management.base import BaseCommand
 
 from evaluations.models import Skill
+
+
+def category(category):
+    CATEGORIES = {
+        'front_end': 'fe',
+        'back_end': 'be',
+        'dev_tools': 'dt',
+        'agile': 'ag',
+        'soft_skills': 'ss'
+    }
+
+    return CATEGORIES[stringcase.snakecase(category.replace(' ', ''))]
 
 
 class Command(BaseCommand):
@@ -49,6 +62,8 @@ class Command(BaseCommand):
                         current_skill["levels"].append(line[3:])
                     elif line.startswith("(") and line.endswith(")"):
                         current_skill["description"] = line[1:-1]
+                    if line.startswith("-"):
+                        current_skill["category"] = category(line[2:])
 
         if current_skill:
             skills.append(current_skill)
@@ -56,12 +71,15 @@ class Command(BaseCommand):
         if skills:
             for skill_def in skills:
                 skill, _ = Skill.objects.get_or_create(
-                    name=skill_def["name"], version=skill_def["version"], defaults={"levels": skill_def["levels"]}
-                )
+                    name=skill_def["name"],
+                    version=skill_def["version"],
+                    defaults={"levels": skill_def["levels"]})
                 skill.levels = skill_def["levels"]
                 if "description" in skill_def:
                     skill.description = skill_def["description"]
                 if "version" in skill_def:
                     skill.version = skill_def["version"]
+                if "category" in skill_def:
+                    skill.category = skill_def["category"]
                 skill.save()
         print(f"{len(skills)} skills loaded.")
