@@ -7,6 +7,10 @@
   --purple: #6e56b1;
 }
 
+.roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
 /* .sans-serif {
   font-family: 'IBM Plex Sans', sans-serif;
 }

@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Momentum Classroom</title>
-  <link rel="stylesheet" href="{% static 'css/tachyons.min.css' %}">  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/tachyons.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/classroom.css' %}">
   <script src="{% static 'js/chart.js' %}"></script>
   <script src="{% static 'js/classroom.js' %}"></script>
@@ -17,12 +19,13 @@
   {% block head %}
   {% endblock %}
 </head>
-<body class="sans-serif">
+<body class="roboto">
   <div class="bl br bw2 b--salmon min-vh-100">
     <div class="bg-navy">
       <h1 class="f1 white ma0 normal mw8 ph4 pv2 center">
-        <a class="link white" href="/">Momentum Classroom</a>
+        <a class="link white" href="/">Momentum</a>
       </h1>
+      <h2 class="white mv1 ph4 pv2 center">Technical Self-Assessments</h2>
     </div>
     <div class="mw8 ph4 pv2 center lh-copy">
       {% if messages %}
