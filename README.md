@@ -29,6 +29,18 @@ createuser -d classroom
 createdb -U classroom classroom
 ```
 
+#### Seeding skills data
+
+Skills are listed in versioned markdown files and can be seeded to the database with the custom management command `load_skills` followed by the path to the file.
+
+The naming convention is important as the script will assign versions to the skills based on the filename; the file should start with a lowercase `v` followed by a version number. For instance, a file named `v2-skills.md` will have skills saved with a version number 2.
+
+Versioning the skills lets us keep backwards compatible data as we update skill sets on which we want to evaluate students.
+
+```py
+python ./manage.py load_skills skills.md
+```
+
 ### .env
 
 This application is configured via environment variables. In lieu of using environment variables, you can copy the file `config/.env.sample` to `config/.env` and then edit this file. Note that by default, debug mode is **off**, and that you need to set the environment variable `DEBUG` or use the `config/.env` file to turn debug mode on.

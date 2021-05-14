@@ -110,3 +110,7 @@ label.radio input {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
+.asteriskField {
+    display: none;
+}
