@@ -57,3 +57,76 @@
 2. I can create or reproduce a basic page design using flexbox properties so that a layout resizes properly at different widths.
 3. I can create or reproduce a page design using flexbox properties so that a layout resizes properly at different widths. I can nest flexbox elements and use properties like `align-content`, `justify-content`, and `align-items` to create a more complex layout.
 4. I can create or reproduce a page design using flexbox properties so that a layout resizes properly at different widths. I can nest flexbox elements, use properties like `align-content`, `justify-content`, and `align-items`, and apply `flex-grow` , `flex-shrink`, and `flex-basis` to create a more complex layout.
+
+### Conditions and Logic in JavaScript
+
+- Front End
+
+0. I am unfamiliar with conditionals and logical operators in JavaScript.
+1. I can use `if...else` statements to control the flow of execution in my code.
+2. I can use `if...else` statements, and I can use comparison and equality operators (`>`, `<`, `>=`, `<=`, `===`, and `!=`).
+3. I can do all of the above, and I can use logical operators (`&&` , `||`, and `!`), and truthy and falsy values in conditionals.
+4. I can do all of the above, and I can use `switch` statements. I can also control flow without `if` statements by using early returns or short-circuit evaluation.
+
+### Values, Types, and Variables in JavaScript
+
+- Front End
+
+0. I am not familiar with data types in JavaScript.
+1. I can declare variables using `let` and `const` keywords and assign values to them; I can work with strings, numbers, booleans, undefined, and null.
+2. I can declare variables using `let` and `const` keywords and assign values to them using strings, numbers, booleans, null, and undefined and use them in expressions with comparison operators (like `===` or `!=`) and arithmetic operators like `+` , `-`, `*`, `/`, `%` and `**`.
+3. I can do all of the above, and I can use shortcut assignment operators like `++`and `+=`.
+4. I can do all of the above, and I can work with built-in types like Date, Math, or RegExp.
+
+
+### Using Functions in JavaScript
+
+- Front End
+
+0. I am unfamiliar with functions in JavaScript.
+1. I can declare a function using the `function` keyword and call it.
+2. I can declare a function using the `function` keyword and call it, with or without arguments. I can return a value from a function and use `console.log` to check values in the console.
+3. I can declare a function using the `function` keyword. I can write a function that accepts one or more arguments. I can return a value from a function. I can organize my code using functions, and store return values in variables or use them in expressions.
+4. I can do all of the above. I can define a function as a declaration or as an expression and understand their differences. I can use arrow function syntax.
+
+
+### Arrays and Iteration in JavaScript
+
+- Front End
+
+0. I am unfamiliar with working with arrays and iteration in JavaScript.
+1. I can use `for` and `while` loops to repeatedly execute code. I can create an array, access its `length` property, and use bracket notation to retrieve its items.
+2. I can use `for` and `while` loops to repeatedly execute code. I can create an array, access its `length` property, and use bracket notation to retrieve its items, including inside a loop. I can use array methods like `pop`and `push` to add or remove items.
+3. I can use `for` and `while` loops to repeatedly execute some code and to access and manipulate data in arrays. I can use common array methods like `pop`, `push`, `splice`, and `join` and can look up methods as needed. I can transform, filter, or reduce an array using loops.
+4. I can do all of the above and I can use `map`, `filter`, and `reduce`.
+
+### DOM manipulation with JavaScript
+
+- Front End
+
+0. I am unfamiliar with DOM manipulation.
+1. I can use the browser's Web API to select DOM nodes on a page.
+2. I can select single or multiple DOM nodes and get or set their attributes, such as adding or removing a class or changing a `src` attribute on an image element.
+3. I can select single or multiple DOM nodes and change their attributes, such as adding or removing a class or changing a `src` attribute on an image element. I can change the DOM by adding new elements and removing existing elements.
+4. I can do all of the above, and I can work with the `window` object and other Web APIs like Storage, Geolocation, Canvas, or HTML Drag and Drop.
+
+### Events in JavaScript
+
+- Front End
+
+0. I am unfamiliar with events in JavaScript.
+1. I can specify an event by name (for example, a 'click' event), select a DOM node and register an event listener for it using `addEventListener()`. I can log the event to the console.
+2. I can specify an event by name (for example, a 'click' event), select a DOM node and register an event listener for it using `addEventListener()`. I can log the event to the console. I can use the event target in my code to change the DOM in response to the event.
+3. I can do all of the above, and I can choose different event types for different purposes. I can use event delegation to simplify handling events on multiple elements. I can cancel events with the `preventDefault()` method.
+4. I can do all of the above. I can use event delegation to conditionally respond to events with different targets. I can register multiple event listeners on the same page and manage more complex interactions with some understanding of the JavaScript event loop.
+
+
+### Forms and Validation
+
+- Front End
+
+0. I am unfamiliar with form data or validation.
+1. I can create a form in HTML using the `form` element and `input` and `label` elements and use html5 validation to make input values required.
+2. I can create forms in HTML using the `form` element and `input` and `label` elements and use HTML5 validation like `required,` `min` and `max` to validate input values. I can use JavaScript to check an input value in a form field.
+3. I can create forms in HTML using the `form` element and `input` and `label` elements and use HTML5 validation to validate input values. I can use `textarea` , `select` , `radio` and/or `checkbox` elements and use JavaScript to validate input values and show validation and error messages for a user.
+4. I can do all of the above, and I can work with form events. I can use `FormData` to collect data from a form.
