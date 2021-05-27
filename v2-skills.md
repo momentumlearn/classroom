@@ -158,7 +158,7 @@
 0. I am unfamiliar with making AJAX requests.
 1. I can make a request using Fetch to retrieve data and format it as JSON.
 2. I can make a request to an API using Fetch to retrieve data and format it as JSON. I can work with nested JSON data and display it on a page.
-3. I can make a request to an API using Fetch to retrieve data. I can work with nested JSON data and display it on a page. I can use Javascript to build different url paths and query parameters (e.g., using template literals). I can make requests to create new data, update existing data, or delete data. I can use the `then()` method to work with promises returned from `fetch` calls.
+3. I can make a request to an API using Fetch to retrieve data. I can work with nested JSON data and display it on a page. I can use Javascript to build different URL paths and query parameters (e.g., using template literals). I can make requests to create new data, update existing data, or delete data. I can use the `then()` method to work with promises returned from `fetch` calls.
 4. I can do all of the above, and I can do some or all of the following: I can chain requests using `then()` and use data from a response to make additional requests;  I can check a status code from a request and conditionally do something based on different statuses; I can use `async/await`.
 
 ### HTTP
@@ -169,4 +169,4 @@
 1. I am familiar with HTTP requests in the browser and I can view them in the network panel. I am familiar with the HTTP methods GET, POST, PUT/PATCH, and DELETE and can explain the actions they usually do.
 2. I am familiar with HTTP requests in the browser and I can view them in the network panel. I am familiar with the HTTP methods GET, POST, PUT/PATCH, and DELETE and can explain the actions they usually do. I can interpret common HTTP status codes (such as 200, 301, 404, or 500). I can run a local server and make requests in a development environment.
 3. I can do all of the above, and I can send HTTP requests with an API client like Insomnia or Postman. I can set appropriate request headers (as required by an API) or response headers (when designing an API). I can troubleshoot request issues using the network panel in the browser and I understand the concept of a session and the use of cookies.
-4. I can do all of the above, and I can explain the details of what happens when you type a URL into a browser. I can explain the significance of some or all of the following: HTTPS vs HTTP, CORS, CSRF, XSS.
+4. I can do all of the above, and I can explain the details of what happens when you type a URL into a browser. I can explain the basics of some or all of the following: HTTPS vs HTTP, CORS, CSRF, XSS.
