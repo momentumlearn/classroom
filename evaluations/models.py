@@ -16,6 +16,7 @@ class Skill(SortableMixin):
         DEV_TOOLS = 'dt', 'Dev Tools'
         AGILE = 'ag', 'Agile Development'
         SOFT_SKILLS = 'ss', 'Soft Skills'
+        GENERAL = 'ge', 'General'
 
     name = models.CharField(max_length=150)
     description = models.TextField(blank=True, null=True)
