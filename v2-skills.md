@@ -130,3 +130,43 @@
 2. I can create forms in HTML using the `form` element and `input` and `label` elements and use HTML5 validation like `required,` `min` and `max` to validate input values. I can use JavaScript to check an input value in a form field.
 3. I can create forms in HTML using the `form` element and `input` and `label` elements and use HTML5 validation to validate input values. I can use `textarea` , `select` , `radio` and/or `checkbox` elements and use JavaScript to validate input values and show validation and error messages for a user.
 4. I can do all of the above, and I can work with form events. I can use `FormData` to collect data from a form.
+
+### JavaScript Debugging
+
+- Front End
+
+0. I am unfamiliar with debugging in JavaScript.
+1. I can read error messages in the browser console and find the corresponding line in my code. I can use a linter in my code editor to highlight and prevent errors in my code.
+2. I can read error messages in the browser console and find the corresponding line in my code. I can use a linter in my code editor to highlight and prevent errors in my code. I can identify common error messages like `TypeError`, `SyntaxError`, and `ReferenceError` and know what they usually indicate. I can use `console.log` to pinpoint problems in my code. I can Google error messages and find solutions.
+3. I can do all of the above, and I can find the source of bugs in my code by methodically observing, reproducing, and isolating problems.
+4. I can do all of the above, and I can set breakpoints in my code and use the debugger to inspect the context. I can use `try/catch` statements to handle errors and exceptions.
+
+### JavaScript Objects
+
+- Front End
+
+0. I am unfamiliar with JavaScript objects.
+1. I can use objects to store different types of data in key/value pairs.
+2. I can use objects to store different types of data in key/value pairs. I can get the value of a property of an object using dot notation or bracket notation.
+3. I can use objects to store different types of data in key/value pairs. I can get and set properties of an object using bracket notation and dot notation. I can work with nested objects to retrieve data, and I can use expressions and variables as lookup keys with bracket notation.
+4. I can do all of the above, and I can use object methods like `Object.keys()` and ES6 object destructuring.
+
+### JS and AJAX with Fetch
+
+- Front End
+
+0. I am unfamiliar with making AJAX requests.
+1. I can make a request using Fetch to retrieve data and format it as JSON.
+2. I can make a request to an API using Fetch to retrieve data and format it as JSON. I can work with nested JSON data and display it on a page.
+3. I can make a request to an API using Fetch to retrieve data. I can work with nested JSON data and display it on a page. I can use Javascript to build different URL paths and query parameters (e.g., using template literals). I can make requests to create new data, update existing data, or delete data. I can use the `then()` method to work with promises returned from `fetch` calls.
+4. I can do all of the above, and I can do some or all of the following: I can chain requests using `then()` and use data from a response to make additional requests;  I can check a status code from a request and conditionally do something based on different statuses; I can use `async/await`.
+
+### HTTP
+
+- General
+
+0. I am unfamiliar with the basics of HTTP requests.
+1. I am familiar with HTTP requests in the browser and I can view them in the network panel. I am familiar with the HTTP methods GET, POST, PUT/PATCH, and DELETE and can explain the actions they usually do.
+2. I am familiar with HTTP requests in the browser and I can view them in the network panel. I am familiar with the HTTP methods GET, POST, PUT/PATCH, and DELETE and can explain the actions they usually do. I can interpret common HTTP status codes (such as 200, 301, 404, or 500). I can run a local server and make requests in a development environment.
+3. I can do all of the above, and I can send HTTP requests with an API client like Insomnia or Postman. I can set appropriate request headers (as required by an API) or response headers (when designing an API). I can troubleshoot request issues using the network panel in the browser and I understand the concept of a session and the use of cookies.
+4. I can do all of the above, and I can explain the details of what happens when you type a URL into a browser. I can explain the basics of some or all of the following: HTTPS vs HTTP, CORS, CSRF, XSS.

@@ -14,7 +14,8 @@ def category(category):
         'back_end': 'be',
         'dev_tools': 'dt',
         'agile': 'ag',
-        'soft_skills': 'ss'
+        'soft_skills': 'ss',
+        'general': 'ge',
     }
 
     return CATEGORIES[stringcase.snakecase(category.replace(' ', ''))]

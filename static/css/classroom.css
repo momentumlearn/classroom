@@ -32,6 +32,7 @@ code, .code {
   font-weight: bold;
   display: block;
   margin-bottom: 0.5rem;
+  font-size: 1.25rem;
 }
 
 .submit-button {
@@ -60,6 +61,10 @@ label.radio {
 label.checkbox input,
 label.radio input {
   margin-right: 0.5rem;
+}
+
+label.radio:hover {
+  background-color: #E8FDF5;
 }
 
 .eval-report {
@@ -117,4 +122,15 @@ label.radio input {
 
 .asteriskField {
     display: none;
+}
+
+.help-block {
+  color: red;
+  background-color: #FFDFDF;
+  font-weight: 700;
+  padding: 10px;
+}
+
+.controls {
+
 }
