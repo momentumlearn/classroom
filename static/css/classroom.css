@@ -64,7 +64,7 @@ label.radio input {
 }
 
 label.radio:hover {
-  background-color: #E8FDF5;
+  background-color: #CEEEF3;
 }
 
 .eval-report {
@@ -131,6 +131,3 @@ label.radio:hover {
   padding: 10px;
 }
 
-.controls {
-
-}
