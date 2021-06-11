@@ -131,3 +131,7 @@ label.radio:hover {
   padding: 10px;
 }
 
+.btn--select-all {
+  background-color: #6e56b1;
+  margin-top: 2rem
+}

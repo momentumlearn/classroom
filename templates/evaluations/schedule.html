@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
-  {% crispy form form.helper %}  
+  <button id="select-all" class="f6 link ph3 pv2 mb2 dib white b btn--select-all">Check All</button>
+  {% crispy form form.helper %}
+  <script src= {% static "js/schedule_evaluation.js" %}
 {% endblock %}
+
+
