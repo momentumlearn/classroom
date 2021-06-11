@@ -170,3 +170,53 @@
 2. I am familiar with HTTP requests in the browser and I can view them in the network panel. I am familiar with the HTTP methods GET, POST, PUT/PATCH, and DELETE and can explain the actions they usually do. I can interpret common HTTP status codes (such as 200, 301, 404, or 500). I can run a local server and make requests in a development environment.
 3. I can do all of the above, and I can send HTTP requests with an API client like Insomnia or Postman. I can set appropriate request headers (as required by an API) or response headers (when designing an API). I can troubleshoot request issues using the network panel in the browser and I understand the concept of a session and the use of cookies.
 4. I can do all of the above, and I can explain the details of what happens when you type a URL into a browser. I can explain the basics of some or all of the following: HTTPS vs HTTP, CORS, CSRF, XSS.
+
+### Basic Values and Variables in Python
+
+- Back End
+
+0. I am unfamiliar with integers, floats, strings, booleans, and variables in Python.
+1. I can create integers, floats, strings, and booleans in Python, and I can assign them to variables.
+2. I can create integers, floats, strings, and booleans in Python, and I can assign them to variables. I can use them in expressions with comparison operators (like `==`, `!=`, `>`, `<`, `>=`, `<=` ) and arithmetic operators like `+` , `-`, `*`, `/`, `//`, `%` and `**`.
+3. I can do all of the above, and I can use logical operators like `and`, `or`, and `not`. I can convert one type to another using built-in functions like `int()` or `str()`.  I can use the Python shell to run Python code.
+4. I can do all of the above, and I can use the built-in function `type()` to inspect the type of object I'm working with. I know why I would use one type or another and when I would need to convert types.
+
+### Using Lists in Python
+
+- Back End
+
+0. I am unfamiliar with lists in Python.
+1. I can create a list in Python and get its length. I can access items in a list using bracket notation.
+2. I can create a list in Python and get its length. I can access items in a list using bracket notation. I can use list methods like append(). I can check if things are in a list using the in operator. I can iterate over list items using a loop.
+3. I can do all of the above, and I can sort lists and use a list comprehension to return a new list of transformed values. I can use built-in functions with lists, like min(), max(), or sum().
+4. I can do all of the above, and I can use nested lists, tuples, and/or sets to model data. I can use more complex list comprehensions with conditional logic.
+
+### Using Dictionaries in Python
+
+- Back End
+
+0. I am unfamiliar with dictionaries in Python.
+1. I can create a dictionary with keys and values in Python, and I can access values in a dictionary using bracket notation.
+2. I can use a dictionary to store data with key:value pairs in Python, and I can access values in a dictionary using bracket notation. I can reassign a new value to an existing key. I can add new keys and values to an existing dictionary.
+3. I can do all of the above. I know how to use default values and avoid `KeyError` when accessing values, and I can use dictionary comprehensions to transform data.
+4. I can do all of the above. I know how to use default values and avoid `KeyError` when accessing values, and I can use dictionary comprehensions to transform data.
+
+### Using Functions in Python
+
+- Back End
+
+0. I am unfamiliar with functions in Python.
+1. I can write a function using the `def` keyword and call it.
+2. I can write a function using the `def` keyword and call it, with or without arguments. I can return a value from a function and use print statements to check values in the shell.
+3. I can do all of the above, and I can write a function that accepts one or more arguments and set default arguments. I can organize my code using functions, write functions that call other functions, and store return values in variables or use them in expressions.
+4. I can do all of the above. I can use function decorators (using the `@decorator` syntax) and I can use *args and **kwargs to pass a varying number of arguments to a function.
+
+### Working with files in Python
+
+- Back End
+
+0. I am unfamiliar with working with files in Python.
+1. I can handle a text or csv file in Python using `open()` and use the data in my program using methods like `read()` and `readlines()`.
+2. I can handle a text or csv file in Python using `open()` and use the data in my program using methods like `read()` and `readlines()`. I can iterate over each line and transform it using appropriate data types and methods.
+3. I can do all of the above. I can use the `with` context manager to handle files efficiently. I can look up documentation for Python's `io` module to work with file objects () or other input types.
+4. I can do all of the above, and I can do some or all of the following: I can work with compressed files (like ZIP or TAR); I can create new files and write to files: I can create a custom context manager for more complex file handling; I can use the `os` and/or `pathlib` module from Python's Standard Library to interact with the file system; I can handle multiple files with `fileinput`.
