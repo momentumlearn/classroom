@@ -220,3 +220,33 @@
 2. I can handle a text or csv file in Python using `open()` and use the data in my program using methods like `read()` and `readlines()`. I can iterate over each line and transform it using appropriate data types and methods.
 3. I can do all of the above. I can use the `with` context manager to handle files efficiently. I can look up documentation for Python's `io` module to work with file objects () or other input types.
 4. I can do all of the above, and I can do some or all of the following: I can work with compressed files (like ZIP or TAR); I can create new files and write to files: I can create a custom context manager for more complex file handling; I can use the `os` and/or `pathlib` module from Python's Standard Library to interact with the file system; I can handle multiple files with `fileinput`.
+
+### Modules and Packages in Python
+
+- Back End
+
+0. I am unfamiliar with modules and packages in Python.
+1. I can use `pip` and `pipenv` to install and manage Python packages, and I can work within a Python virtual environment.
+2. I can use `pip` and `pipenv` to install and manage Python packages, and I can work within a Python virtual environment. I can use `import` or `from...import` statements to access classes, objects, and functions defined in a module. I can use built-in Python modules like `random`, `math`, `os`, or `pathlib`.
+3. I can do all of the above, and I can troubleshoot import issues with my understanding of how the Python interpreter searches for a module.
+4. I can do all of the above, and I can create and import my own modules and use dot notation to namespace them. I can use the dunder variable `__name__` to check the way that my python script is being run.
+
+### Classes and Objects in Python
+
+- Back End
+
+0. I am unfamiliar with classes and objects in Python.
+1. I can define a Python class and create a new object from that class.
+2. I can define a Python class and define attributes and methods on it, and I can create a new object from that class. I can override methods like `__init__()` and `__str__()` in a class.
+3. I can do all of the above, and I can use inheritance to subclass a Python class and share a common interface. I can use `type()` and `dir()` to find more information about an object.
+4. I can do all of the above, and I can use multiple inheritance and `super()`. I can use composition to create more flexible classes.
+
+### Django Basics
+
+- Back End
+
+0. I am unfamiliar with the way Django works.
+1. I can create a new Django project and generate apps using `django-admin` commands, and I can make my way around Django's file structure.
+2. I can do all of the above, and I can create a basic Django model (with fields like `CharField`, `TextField`, or `DateTimeField`) and migrate the database. I can create a URL for homepage, write a view to handle that URL, and create a template that the view can render.
+3. I can do all of the above, and I can create a Django form for a model and collect user input from a form on a web page. I can use the POST data to create a new object and save it to the database. I can allow a user to edit and delete objects from the web browser. I can use the Django admin interface to work with my data. I can create additional URLs, views, and templates to provide basic CRUD functionality.
+4. I can do all of the above, and I can add additional packages to my application, editing `settings.py` and following documentation. I can use the Django shell to work with models in my application. I can use a `.env` file to store secrets for my application.
