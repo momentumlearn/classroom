@@ -191,3 +191,5 @@ if env("SENTRY_DSN"):
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
 del DATABASES["default"]["OPTIONS"]["sslmode"]
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
