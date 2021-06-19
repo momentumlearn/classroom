@@ -34,7 +34,7 @@
 
 1. I am unfamiliar with HTML.
 2. I can read and identify tags from an HTML document and can look up unfamiliar tags on MDN. I can create a basic HTML page with elements for sections, text, and images.
-3. I can create a valid HTML document with appropriate meta data; use sectioning, text content, and image elements; and inspect HTML in the browser with dev tools. I can use global attributes like `id`and `class`, element-specific attributes like `href` or `src`, or boolean attributes like `required`.
+3. I can create a valid HTML document with appropriate meta data; use sectioning, text content, and image elements; and inspect HTML in the browser with dev tools. I can use global attributes like `id` and `class`, element-specific attributes like `href` or `src`, or boolean attributes like `required`.
 4. I can create a valid and semantic HTML document with appropriate meta data; use sectioning, text content, and image elements; and inspect HTML in the browser with dev tools. I can use global, element-specific, and boolean attributes. I can use custom `data-*` attributes to include additional information on elements.
 5. I can create a valid, semantic, and accessible HTML document with appropriate meta data; use sectioning, text content, and image elements; and inspect HTML in the browser with dev tools.I can use custom `data-*` attributes to include additional information on elements. I can use some or all of: html entities, html5 validation, and elements like `iframe`, `audio`, `video`, or `svg`.
 
