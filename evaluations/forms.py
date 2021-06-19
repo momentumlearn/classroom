@@ -58,7 +58,7 @@ class EvaluationForm(forms.Form):
                 required=True,
                 choices=([(i, f"{i}. {level}")
                           for i, level in enumerate(skill.levels)]),
-                widget=forms.RadioSelect,
+                widget=forms.RadioSelect(attrs={'class': "skill-level"}),
             )
 
         self.helper = FormHelper()

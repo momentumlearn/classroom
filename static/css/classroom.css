@@ -135,3 +135,10 @@ label.radio:hover {
   background-color: #6e56b1;
   margin-top: 2rem
 }
+
+form code {
+  color: #800F2F;
+  background-color: #FFD6DE;
+  padding: 2px;
+  border-radius: 4px;
+}

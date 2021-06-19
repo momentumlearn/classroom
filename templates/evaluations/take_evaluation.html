@@ -1,6 +1,10 @@
 {% extends "base.html" %}
+{% load static %}
+
 {% load crispy_forms_tags %}
 
 {% block content %}
-  {% crispy form %}  
+  {% crispy form %}
+  <script src={% static "js/markdownit.min.js" %}></script>
+  <script src={% static "js/take_evaluation.js" %}></script>
 {% endblock %}
