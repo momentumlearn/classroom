@@ -250,3 +250,43 @@
 2. I can do all of the above, and I can create a basic Django model (with fields like `CharField`, `TextField`, or `DateTimeField`) and migrate the database. I can create a URL for homepage, write a view to handle that URL, and create a template that the view can render.
 3. I can do all of the above, and I can create a Django form for a model and collect user input from a form on a web page. I can use the POST data to create a new object and save it to the database. I can allow a user to edit and delete objects from the web browser. I can use the Django admin interface to work with my data. I can create additional URLs, views, and templates to provide basic CRUD functionality.
 4. I can do all of the above, and I can add additional packages to my application, editing `settings.py` and following documentation. I can use the Django shell to work with models in my application. I can use a `.env` file to store secrets for my application.
+
+### Making Queries in Django
+
+- Back End
+
+0. I am unfamiliar with making queries in Django.
+1. I can retrieve all objects from a table using the `.all()` method on a model manager (e.g., `SomeModel.objects.all()`).
+2. I can retrieve all objects from a table using the `.all()` method on a model manager (e.g., `SomeModel.objects.all()`). I can retrieve one object using `get()` with specific attributes, like `pk`. I can save changes to the database.
+3. I can do all of the above, and  I can use other methods like `order_by()`, `filter()` or `exclude()` with field attributes and lookups (like `icontains` or `lte`). I can use the Django admin to access and change data. I can work with models and QuerySets using the Django ORM in the shell to test and refine my queries.
+4. I can do all of the above, and I can use lookups that span relationships. I can use `Q` objects and `F` expressions to create more complex queries.
+
+### Django Users, Authentication, and Permissions
+
+- Back End
+
+0. I am unfamiliar with users, authentication, and permissions in Django.
+1. I can implement login and registration in a Django application using `django-registration-redux` or `django-allauth`.
+2. I can implement login and registration in a Django application using `django-registration-redux`. I can create a custom user model that subclasses Django's `AbstractUser`.
+3. I can do all of the above, and I can limit access to logged in users using the `login_required` (and/or `permission_required`) decorators in views and the `is_authenticated` attribute on users in views and templates and redirect users to the appropriate page. I can create and work with superusers and admin users.
+4. I can do all of the above, and I can customize the default templates or views, create custom permissions, and use the `user_passes_test` decorator to limit user access in views.
+
+### Django Models
+
+- Back End
+
+0. I am unfamiliar with models in Django.
+1. I can write a model to create code representations for data I want to use in my application, using Python classes and attributes.
+2. I can write a model to create code representations for data I want to use in my application, using Python classes and attributes. I can use django commands to `makemigrations` and `migrate` a database. I can use appropriate Model field types, like `CharField`, `TextField`, `IntegerField`, or  `SlugField` with field-specific arguments.  I can retrieve model instances in my views.
+3. I can do all of the above, and I can set up a one-to-many relationship using `ForeignKey` and many-to-many relationships using the `ManyToManyField`. I can define custom methods on a model, like `__str__()` or `get_absolute_url()`.
+4. I can do all of the above, and I can use model field choices and meta data to further customize a model. I can override inherited methods to alter the behavior of a model. I can read generated migrations and troubleshoot issues with my data by looking at the database.
+
+### Django Templates and Context Variables
+
+- Back End
+
+0. I am unfamiliar with templates in Django.
+1. I can create a template to display dynamic content in my application using variables from the view context (such as a list of books or information about one book) and render it from a view.
+2. I can create a template to display dynamic content in my application using variables from the view context (such as a list of books or information about one book) and render it from a view. I can use template tags to add logic to my templates, such as conditional rendering of content, and to create urls for links.
+3. I can do all of the above, and I can use tags like `{% block content %}` and `{% extends "base.html" %}` to dynamically create pages. I can use filters (like `title` or `dictsort`) to control the way the data is rendered in the template.
+4. I can do all of the above, and I can use `extends` and `block` tags in child templates (not just with `base.html`) to create dynamic and reusable templates. I can create custom tags and filters or load libraries like `i18n` for use in templates.
