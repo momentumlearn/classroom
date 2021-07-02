@@ -289,4 +289,24 @@
 1. I can create a template to display dynamic content in my application using variables from the view context (such as a list of books or information about one book) and render it from a view.
 2. I can create a template to display dynamic content in my application using variables from the view context (such as a list of books or information about one book) and render it from a view. I can use template tags to add logic to my templates, such as conditional rendering of content, and to create urls for links.
 3. I can do all of the above, and I can use tags like `{% block content %}` and `{% extends "base.html" %}` to dynamically create pages. I can use filters (like `title` or `dictsort`) to control the way the data is rendered in the template.
-4. I can do all of the above, and I can use `extends` and `block` tags in child templates (not just with `base.html`) to create dynamic and reusable templates. I can create custom tags and filters or load libraries like `i18n` for use in templates.
+4. I can do all of the above, and I can use `extends`, `include`, and `block` tags in child templates (not just with `base.html`) to create dynamic and reusable templates. I can create custom tags and filters or load libraries like `i18n` for use in templates.
+
+### Django Forms
+
+- Back End
+
+0. I am unfamiliar with forms in Django.
+1. I can create a form using Django's `ModelForm` with fields that correspond to a model. I can respond to a GET request by rendering a template that uses the `form` instance. I can use a form with POST requests to validate, create, and update objects in the view.
+2. I can create a form using Django's `ModelForm` with fields that correspond to a model. I can respond to a GET request by rendering a template that uses the `form` instance. I can use a form with POST requests to validate, create, and update objects in the view. I can create a form manually in the template's HTML to customize the appearance of the form.
+3. I can do all of the above, and I can choose from Django's Form fields and widgets to customize form inputs. I can create reusable form templates for use with the `include` tag. I can handle file or image uploads.
+4. I can do all of the above, and I can override the form or field `clean()` methods to customize form validation. I can use packages like `django-crispy-forms` to customize form rendering.
+
+### Django with JavaScript
+
+- Back End
+
+0. I am unfamiliar with using JavaScript in a Django application.
+1. I can configure Django to work with static files. I can include JavaScript in specific templates to enhance page functionality.
+2. I can configure Django to work with static files. I can include JavaScript in specific templates to enhance page functionality. I can use AJAX requests in my templates. I can handle AJAX requests in my views and respond with JSON.
+3. I can do all of the above, and I can conditionally return JSON or HTML depending on the request. I can refactor an existing view and template to use AJAX and JSON.
+4. I can do all of the above, and I can configure Django to use webpack with `django-webpack-loader`, allowing templates to include JavaScript libraries like React or Vue.js.
