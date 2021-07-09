@@ -310,3 +310,23 @@
 2. I can configure Django to work with static files. I can include JavaScript in specific templates to enhance page functionality. I can use AJAX requests in my templates. I can handle AJAX requests in my views and respond with JSON.
 3. I can do all of the above, and I can conditionally return JSON or HTML depending on the request. I can refactor an existing view and template to use AJAX and JSON.
 4. I can do all of the above, and I can configure Django to use webpack with `django-webpack-loader`, allowing templates to include JavaScript libraries like React or Vue.js.
+
+### Debugging in Django
+
+- Back End
+
+0. I am unfamiliar with debugging in Django.
+1. I can read a Django error message to locate the source of the error.
+2. I can read a Django error message to locate the source of the error. I can fix common errors in my application like `ImportError` or `NameError` and Django exceptions like `TemplateDoesNotExist` and `NoReverseMatch`.
+3. I can do all of the above, and I can read a traceback for more information about the cause of an error. I can research unfamiliar errors and find solutions.
+4. I can do all of the above, and I can use the Python debugger (`pdb` module) and `django-debug-toolbar` to investigate the source of problems in my code and fix them.
+
+### Deploying Django Applications to Heroku
+
+- Back End
+
+0. I am unfamiliar with deploying Django applications to Heroku.
+1. I can use the Heroku dashboard and cli and follow their documentation to create a new Django application on Heroku.
+2. I can configure an existing Django application to work in the Heroku production environment and use Heroku's Postgres add-on for a production database. I can manually deploy my code to Heroku using git. I can manage my production database using Heroku commands. I can use a Postgres database locally and configure Django to connect to the development database.
+3. I can do all of the above, and I can view Heroku's server logs to troubleshoot production issues. I can configure my Django application to use AWS S3 for asset hosting.
+4. I can do all of the above, and I configure my Django application on Heroku with add-ons that provide additional backing services (such as email or caching services). I can configure and use Heroku's GitHub integration for automatic deploys.
