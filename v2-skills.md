@@ -259,7 +259,7 @@
 1. I can retrieve all objects from a table using the `.all()` method on a model manager (e.g., `SomeModel.objects.all()`).
 2. I can retrieve all objects from a table using the `.all()` method on a model manager (e.g., `SomeModel.objects.all()`). I can retrieve one object using `get()` with specific attributes, like `pk`. I can save changes to the database.
 3. I can do all of the above, and  I can use other methods like `order_by()`, `filter()` or `exclude()` with field attributes and lookups (like `icontains` or `lte`). I can use the Django admin to access and change data. I can work with models and QuerySets using the Django ORM in the shell to test and refine my queries.
-4. I can do all of the above, and I can use lookups that span relationships. I can use `Q` objects and `F` expressions to create more complex queries.
+4. I can do all of the above, and I can use lookups that span relationships. I can use `Q` objects and `F` expressions to create more complex queries. I can use aggregations and annotations to derive values from stored data.
 
 ### Django Users, Authentication, and Permissions
 
