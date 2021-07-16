@@ -330,3 +330,73 @@
 2. I can configure an existing Django application to work in the Heroku production environment and use Heroku's Postgres add-on for a production database. I can manually deploy my code to Heroku using git. I can manage my production database using Heroku commands. I can use a Postgres database locally and configure Django to connect to the development database.
 3. I can do all of the above, and I can view Heroku's server logs to troubleshoot production issues. I can configure my Django application to use AWS S3 for asset hosting.
 4. I can do all of the above, and I configure my Django application on Heroku with add-ons that provide additional backing services (such as email or caching services). I can configure and use Heroku's GitHub integration for automatic deploys.
+
+### HTTP & REST APIs
+
+- Back End
+
+0. I am unfamiliar with HTTP in the context of REST APIs.
+1. I can design and create a set of urls that map to CRUD functions for a resource or collection of resources.
+2. I can design and create a set of urls that map to CRUD functions for a resource or collection of resources. I can choose appropriate status codes for a server response.
+3. I can do all of the above, and I can require appropriate headers for requests and set appropriate headers for responses. I can set CORS headers to allow cross-origin requests. I can inspect requests and responses using tools like Insomnia or Postman.
+4. I can do all of the above, and I can specify versions for my API to avoid breaking changes. I can make requests using `curl`.
+
+### Django REST Framework Basics
+
+- Back End
+
+0. I am unfamiliar with Django REST Framework.
+1. I can install `djangorestframework` in a Django app and configure it in settings.
+2. I can install `djangorestframework` in a Django app and configure it in settings. I can add a serializer to my Django app to expose model data as JSON using Django REST Framework.
+3. I can do all of the above and I can use `APIView` in Django REST Framework to handle requests. I can use Insomnia or the browsable API to test my endpoints.
+4. I can do all of the above and I can deploy my application to Heroku. I can provide documentation for my API in a README or with tools like OpenAPI and Swagger.
+
+### DRF Serializers
+
+- Back End
+
+0. I am not familiar with serializers in Django REST Framework.
+1. I can create a serializer that exposes the data in model fields by extending `ModelSerializer` class in DRF.
+2. I can create a serializer that exposes the data in model fields by extending the `ModelSerializer` class in DRF, and I can override fields in the serializer to customize the data and its formatting.
+3. I can create a serializer that exposes the data in model fields by extending the `ModelSerializer` class in DRF, and I can override fields in the serializer to customize the data and its formatting. I can create nested serializers for related data. I can specify serializer classes in the views.
+4. I can do all of the above, and I can customize serializers for specific use cases, such as having different serializers for reading or writing. I can create writable nested serializers.
+
+### JavaScript For React
+
+- Front End
+
+0. I am unfamiliar with the JavaScript needed for React.
+1. I can import and export named and default modules.
+2. I can import and export named and default modules, and I can write single and multi-line arrow functions and omit the `return` keyword appropriately.
+3. I can do all of the above, and I can use the `map()` function to transform the data in a collection. I can use the spread and rest operators and destructuring to manipulate data in objects and arrays.
+4. I can do all of the above, and I can use some of all of the following: the ternary operator, `async`/`await`, `try`/`catch`, and/or optional chaining.
+
+### NPM & Create-React-App
+
+- Front End
+
+0. I am unfamiliar with using `npm`, `package.json`, and the `create-react-app` utility.
+1. I can use the `create-react-app` utility in my terminal to spin up a new boilerplate React project.
+2. I can use the `create-react-app` utility in my terminal to spin up a new boilerplate React project. I can use `npm start` to run a server that will compile/run my code and render my UI on the browser page**.** I can use `npm install` , `package.json`, and commands like `npm outdated` to manage project dependencies and troubleshoot issues with them.
+3. I can do all of the above, and I can add my own React component(s) to `App.js`. I can add static files (such as images) to my `public` folder and import them.
+4. I can do all of the above, and I can modify `create-react-app` defaults to customize my application.
+
+### Passing Props and Using State
+
+- Front End
+
+0. I am unfamiliar with how to create a component using JSX in React.
+1. I can create a functional component in a new `.js` file using arrow function syntax then export it and import it into `App.js` so I can see the new component in my UI on the browser page.
+2. I can pass data from `App.js` to my component by using props and render the data from props in my UI on the browser page. I can track the state of the App component with the `useState` hook.
+3. I can do all of the above and conditionally render two components in `App.js` depending on the state of the App component.
+4. I can do all of the above, and I can modify the state of a parent component from a child component by passing a `useState` function through props.
+
+### The React LifeCycle and AJAX
+
+- Front End
+
+0. I am unfamiliar with making API requests in a React application.
+1. I can install and use a library like `axios` to make HTTPS requests inside of my React application. I can use `axios.get()` to make a request to a URL and and return the data from the response in a promise.
+2. I can install and use a library like `axios` to make HTTPS requests inside of my React application. I can use `axios.get()` to make a request to a URL and and return the data from the response in a promise. I can use the `useEffect` hook to ensure the data from my request renders to the UI after my component has mounted to the DOM.
+3. I can do all of the above and add a dependency array as an optional second argument to my `useEffect` hook to keep my component from continuously making API calls or re-rendering in my UI.
+4. I can do all of the above and use data from props or state in the dependency array that will trigger my `useEffect` hook to run again if the data changes.
