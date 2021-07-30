@@ -400,3 +400,24 @@
 2. I can install and use a library like `axios` to make HTTPS requests inside of my React application. I can use `axios.get()` to make a request to a URL and and return the data from the response in a promise. I can use the `useEffect` hook to ensure the data from my request renders to the UI after my component has mounted to the DOM.
 3. I can do all of the above and add a dependency array as an optional second argument to my `useEffect` hook to keep my component from continuously making API calls or re-rendering in my UI.
 4. I can do all of the above and use data from props or state in the dependency array that will trigger my `useEffect` hook to run again if the data changes.
+
+### React Router
+
+- Front End
+
+0. I am unfamiliar with React Router.
+1. I can use the `<Router>` component and the `<Route>` from `react-router-dom` to keep my UI in sync with the browser URL.
+2. I can use the `<Router>` component and the `<Route>` from `react-router-dom` to keep my UI in sync with the browser URL. I can use the `Switch` component in conjunction with the `Route` component to render the first component that matches an exact path. I can use the `path` and `component` or `render`  props on the `Route` component that will mount a component to the DOM depending on the path that I have assigned as a value to the `path` prop.
+3. I can do all of the above, and I can use the `<Link>` component to create links to different routes for navigation around my React application. I can use the `<Redirect>` component to navigate to a new location based on a condition like whether or not a user is logged in to my React application.
+4. I can do all of the above, and I can use the `useHistory` hook from `react-router-dom` to access my browser's location history. I can use the `.push()` method from `useHistory` to navigate my user to a different route after a form has been submitted.
+
+
+### DRF Authentication and Authorization
+
+- Back End
+
+0. I am unfamiliar with authentication and authorization in Django REST Framework.
+1. I can set up basic authentication using the `djoser` library and DRF authentication classes.
+2. I can set up basic and token authentication using the `djoser` library and DRF authentication classes. I can manage access using DRF permissions classes such as `IsAuthenticatedOrReadOnly`.
+3. I can set up basic and token authentication using DRF authentication classes and manage access using DRF permissions classes such as `IsAuthenticatedOrReadOnly`. I can set specific permission and authentication classes per-view or per-viewset.
+4. I can do all of the above, and I can do some or all of the following: use `django-allauth` to allow third-party login; use JSON Web Token authentication with `djoser` or `djangorestframework-simplejwt`; customize the `UserModel` to use email instead of username for authentication.
