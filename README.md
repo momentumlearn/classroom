@@ -49,4 +49,4 @@ If you add new configuration that might change on environment, please use the en
 
 ## Deployment
 
-This application is currently deployed on AWS Elastic Beanstalk and all files under [.ebextensions](.ebextensions/) are related to that deployment.
+This application is currently deployed on Heroku under the admin@momentumlearn.com account. Automatic deploys are enabled through GitHub, so every push to main will also deploy to Heroku.
