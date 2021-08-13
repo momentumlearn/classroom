@@ -361,6 +361,27 @@
 3. I can create a serializer that exposes the data in model fields by extending the `ModelSerializer` class in DRF, and I can override fields in the serializer to customize the data and its formatting. I can create nested serializers for related data. I can specify serializer classes in the views.
 4. I can do all of the above, and I can customize serializers for specific use cases, such as having different serializers for reading or writing. I can create writable nested serializers.
 
+### DRF Views and Viewsets
+
+- Back End
+
+0. I am unfamiliar with views in Django REST Framework.
+1. I can handle CRUD requests using fuction-based views or view or viewset classes in Django REST Framework.
+2. I can handle CRUD requests using view or viewset classes in Django REST Framework. I can define the data appropriately for each endpoint.
+3. I can do all of the above, and I can define custom handler methods and assign different serializers for different purposes.
+4. I can do all of the above, and I can route extra actions using the `@action` decorator. I can create endpoints and views that handle actions other than basic model CRUD actions.
+
+### DRF Authentication and Authorization
+
+- Back End
+
+0. I am unfamiliar with authentication and authorization in Django REST Framework.
+1. I can set up basic authentication using the `djoser` library and DRF authentication classes.
+2. I can set up basic and token authentication using the `djoser` library and DRF authentication classes. I can manage access using DRF permissions classes such as `IsAuthenticatedOrReadOnly`.
+3. I can set up basic and token authentication using DRF authentication classes and manage access using DRF permissions classes such as `IsAuthenticatedOrReadOnly`. I can set specific permission and authentication classes per-view or per-viewset.
+4. I can do all of the above, and I can do some or all of the following: use `django-allauth` to allow third-party login; use JSON Web Token authentication with `djoser` or `djangorestframework-simplejwt`; customize the `UserModel` to use email instead of username for authentication.
+
+
 ### JavaScript For React
 
 - Front End
@@ -412,12 +433,3 @@
 4. I can do all of the above, and I can use the `useHistory` hook from `react-router-dom` to access my browser's location history. I can use the `.push()` method from `useHistory` to navigate my user to a different route after a form has been submitted.
 
 
-### DRF Authentication and Authorization
-
-- Back End
-
-0. I am unfamiliar with authentication and authorization in Django REST Framework.
-1. I can set up basic authentication using the `djoser` library and DRF authentication classes.
-2. I can set up basic and token authentication using the `djoser` library and DRF authentication classes. I can manage access using DRF permissions classes such as `IsAuthenticatedOrReadOnly`.
-3. I can set up basic and token authentication using DRF authentication classes and manage access using DRF permissions classes such as `IsAuthenticatedOrReadOnly`. I can set specific permission and authentication classes per-view or per-viewset.
-4. I can do all of the above, and I can do some or all of the following: use `django-allauth` to allow third-party login; use JSON Web Token authentication with `djoser` or `djangorestframework-simplejwt`; customize the `UserModel` to use email instead of username for authentication.
