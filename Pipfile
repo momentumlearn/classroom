@@ -9,6 +9,7 @@ mypy = "*"
 yapf = "*"
 pytest = "*"
 flake8 = "<=3.8"
+black = "*"
 
 [packages]
 django = "*"
@@ -28,3 +29,6 @@ stringcase = "*"
 
 [requires]
 python_version = "3.8"
+
+[pipenv]
+allow_prereleases = true
