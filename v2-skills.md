@@ -321,15 +321,15 @@
 3. I can do all of the above, and I can read a traceback for more information about the cause of an error. I can research unfamiliar errors and find solutions.
 4. I can do all of the above, and I can use the Python debugger (`pdb` module) and `django-debug-toolbar` to investigate the source of problems in my code and fix them.
 
-### Deploying Django Applications to Heroku
+### Deploying Django Applications
 
 - Back End
 
-0. I am unfamiliar with deploying Django applications to Heroku.
-1. I can use the Heroku dashboard and cli and follow their documentation to create a new Django application on Heroku.
-2. I can configure an existing Django application to work in the Heroku production environment and use Heroku's Postgres add-on for a production database. I can manually deploy my code to Heroku using git. I can manage my production database using Heroku commands. I can use a Postgres database locally and configure Django to connect to the development database.
-3. I can do all of the above, and I can view Heroku's server logs to troubleshoot production issues. I can configure my Django application to use AWS S3 for asset hosting.
-4. I can do all of the above, and I configure my Django application on Heroku with add-ons that provide additional backing services (such as email or caching services). I can configure and use Heroku's GitHub integration for automatic deploys.
+1. I am unfamiliar with deploying Django applications.
+2. I can use the tools (like a dashboard or cli) and follow documentation provided by a deployment platform service (like Render, Fly.io, or Heroku) to create a new Django application in production.
+3. I can configure an existing Django application to run in a production environment and use Postgres in production. I can deploy my code to production using a GitHub repo. I can manage my production data. I can use a Postgres database locally and configure Django to connect to the development database.
+4. I can do all of the above, and I can view deployment logs and production server logs to troubleshoot production issues. I can configure my Django application to use AWS S3 for asset hosting.
+5. I can do all of the above, and I configure my Django application to provide additional backing services (such as email or caching services) in production.
 
 ### HTTP & REST APIs
 
@@ -348,8 +348,8 @@
 0. I am unfamiliar with Django REST Framework.
 1. I can install `djangorestframework` in a Django app and configure it in settings.
 2. I can install `djangorestframework` in a Django app and configure it in settings. I can add a serializer to my Django app to expose model data as JSON using Django REST Framework.
-3. I can do all of the above and I can use `APIView` in Django REST Framework to handle requests. I can use Insomnia or the browsable API to test my endpoints.
-4. I can do all of the above and I can deploy my application to Heroku. I can provide documentation for my API in a README or with tools like OpenAPI and Swagger.
+3. I can do all of the above and I can use `APIView` in Django REST Framework to handle requests. I can use Insomnia or the browsable API to test my endpoints. I can provide documentation for my API in a README.
+4. I can do all of the above, and I can deploy my application. I can configure appropriate permissions for endpoints. I can customize my endpoints using SerializerMethodField or overriding methods on my view or serializer.
 
 ### DRF Serializers
 
@@ -359,7 +359,7 @@
 1. I can create a serializer that exposes the data in model fields by extending `ModelSerializer` class in DRF.
 2. I can create a serializer that exposes the data in model fields by extending the `ModelSerializer` class in DRF, and I can override fields in the serializer to customize the data and its formatting.
 3. I can create a serializer that exposes the data in model fields by extending the `ModelSerializer` class in DRF, and I can override fields in the serializer to customize the data and its formatting. I can create nested serializers for related data. I can specify serializer classes in the views.
-4. I can do all of the above, and I can customize serializers for specific use cases, such as having different serializers for reading or writing. I can create writable nested serializers.
+4. I can do all of the above, and I can customize serializers for specific use cases, such as having different serializers for reading or writing or providing custom data. I can create writable nested serializers.
 
 ### DRF Views and Viewsets
 
@@ -380,7 +380,6 @@
 2. I can set up basic and token authentication using the `djoser` library and DRF authentication classes. I can manage access using DRF permissions classes such as `IsAuthenticatedOrReadOnly`.
 3. I can set up basic and token authentication using DRF authentication classes and manage access using DRF permissions classes such as `IsAuthenticatedOrReadOnly`. I can set specific permission and authentication classes per-view or per-viewset.
 4. I can do all of the above, and I can do some or all of the following: use `django-allauth` to allow third-party login; use JSON Web Token authentication with `djoser` or `djangorestframework-simplejwt`; customize the `UserModel` to use email instead of username for authentication.
-
 
 ### JavaScript For React
 
