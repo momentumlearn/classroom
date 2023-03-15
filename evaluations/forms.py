@@ -10,15 +10,15 @@ class BetterDateInput(forms.DateInput):
 
 
 class ScheduledEvaluationForm(forms.ModelForm):
+    
     skills = forms.ModelMultipleChoiceField(
         required=False,
         widget=forms.CheckboxSelectMultiple,
-        queryset=Skill.objects.filter(version=2))
+        queryset=Skill.objects.filter(version=2)) # we're only scheduling new evals with skills v2
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-
         self.helper.form_method = "post"
         self.helper.form_action = "schedule_evaluation"
         self.helper.layout = Layout(
@@ -31,9 +31,9 @@ class ScheduledEvaluationForm(forms.ModelForm):
         )
         self.helper.add_input(
             Submit("submit",
-                   "Schedule evaluation",
-                   css_class="submit-button grow mt2"))
-
+                  "Schedule evaluation",
+                  css_class="submit-button grow mt2"))
+        
     class Meta:
         model = ScheduledEvaluation
         fields = (
@@ -67,8 +67,8 @@ class EvaluationForm(forms.Form):
 
         self.helper.add_input(
             Submit("submit",
-                   "Submit evaluation",
-                   css_class="submit-button grow"))
+                  "Submit evaluation",
+                  css_class="submit-button grow"))
 
     def save(self, user):
         if not self.is_valid():

@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "django_better_admin_arrayfield.apps.DjangoBetterAdminArrayfieldConfig",
     "crispy_forms",
+    "crispy_bulma",
     "adminsortable",
     "debug_toolbar",
     # My apps
@@ -194,3 +195,7 @@ django_heroku.settings(locals())
 del DATABASES["default"]["OPTIONS"]["sslmode"]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = ("bulma",)
+
+CRISPY_TEMPLATE_PACK = "bulma"

@@ -42,7 +42,7 @@ code, .code {
   padding-bottom: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  background-color: white;
+  /* background-color: white; */
   border-color: var(--navy);
 }
 
@@ -120,7 +120,7 @@ label.radio:hover {
   padding-right: 1rem;
 }
 
-.asteriskField {
+.asterisk{
     display: none;
 }
 
@@ -141,4 +141,8 @@ form code {
   background-color: #FFD6DE;
   padding: 2px;
   border-radius: 4px;
+}
+
+div .help {
+  font-size: 1.2rem;
 }

@@ -12,4 +12,9 @@ function formatMarkdownText(label){
   label.lastChild.replaceWith(spanEl)
 }
 
+window.addEventListener("load", () => {
+  const validationErrorEl = document.querySelector(".help")
+  validationErrorEl.parentElement.classList.add("has-background-danger-light", "pt-2")
+})
+
 

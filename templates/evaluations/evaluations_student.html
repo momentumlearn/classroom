@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Scheduled Evaluations</h2>
+  <div class="scheduled-evals container mb-4">
+  <h2 class="is-size-4">Scheduled Evaluations</h2>
   
   {% if request.user.scheduled_evaluations.all %}
     <ul>
@@ -12,9 +13,10 @@
   {% else %}
     <p>No evaluations currently scheduled.</p>
   {% endif %}
+  </div>
   
-
-  <h2>Completed Evaluations</h2>
+  <div class="scheduled-evals container mb-4">
+  <h2 class="is-size-4">Completed Evaluations</h2>
   
   {% if evaluations %}
     <ul>
@@ -29,9 +31,10 @@
   {% else %}    
     <p>No evaluations completed.</p>
   {% endif %}
+  </div>
   
-
-  <h2>Your Evaluation Record</h2>
+  <div class="scheduled-evals container mb-4">
+  <h2 class="is-size-4">Your Evaluation Record</h2>
 
   <p><a href="{% url 'evaluations_report' %}">Report card</a></p>
 
@@ -40,6 +43,7 @@
 
   <h3>Average Evaluation Score over Time</h3>
   <canvas id="evaluations-chart" width="400" height="200"></canvas>
+  </div>
 {% endblock %}
 
 {% block scripts %}
