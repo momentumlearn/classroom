@@ -4,8 +4,9 @@ import uuid
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 from django import forms
-from django.contrib.auth.forms import UserChangeForm, UserCreationForm
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm, ValidationError
 from django.core.validators import EmailValidator
+from django.contrib.auth import get_user_model
 
 from .models import User
 
@@ -17,8 +18,17 @@ def random_suffix():
 class CustomUserCreationForm(UserCreationForm):
 
     class Meta:
-        model = User
+        model = get_user_model()
         fields = ('username', 'email')
+        
+    def clean_username(self):
+        """Reject usernames that differ only in case."""
+        username = self.cleaned_data.get("username")
+        UserModel = get_user_model()
+        if username and UserModel.objects.filter(username__iexact=username).exists():
+            raise ValidationError(self.error_messages["unique"], code="unique")
+        else:
+            return username
 
 
 class CustomUserChangeForm(UserChangeForm):
