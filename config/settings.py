@@ -14,7 +14,7 @@ import os
 from pathlib import Path
 
 import environ
-import django_heroku
+import django_on_heroku
 
 # Build paths inside the project like this: BASE_DIR / path
 BASE_DIR = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -191,7 +191,7 @@ if env("SENTRY_DSN"):
     )
 
 # Configure Django App for Heroku.
-django_heroku.settings(locals())
+django_on_heroku.settings(locals())
 del DATABASES["default"]["OPTIONS"]["sslmode"]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
