@@ -3,9 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-  <form>
   {% crispy form form.helper %}
-  </form>
   <script src="{% static "js/schedule_evaluation.js" %}"></script>
 {% endblock %}
 
